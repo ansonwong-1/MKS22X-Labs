@@ -13,7 +13,7 @@ public class Recursion{
   */
   public static void printAllWords(int length,String word){
     if (length > 0){
-      for (char c = 'a'; c <= 'z'; c++){
+      for (char c = 'a'; c <= 'e'; c++){
         printAllWords(length - 1, word + c);
       }
     }else{
