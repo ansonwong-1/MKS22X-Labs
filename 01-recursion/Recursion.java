@@ -14,5 +14,13 @@ public class Recursion{
   public static void printAllWords(int length,String word){
     //WRITE THIS METHOD
   }
-
+  public static void makeWords(int size, String ans){
+    if (size > 0){
+      for (char c = 'a'; c <= 'z'; c++){
+        makeWords(size - 1, ans + c);
+      }
+    }else{
+      System.out.println(ans);
+    }
+  }
 }
