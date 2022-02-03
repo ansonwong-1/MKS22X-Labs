@@ -39,10 +39,21 @@ public class Recursion{
   *@param letters: the letters you should be using
   */
   public static void printNoDoubleLetterWords(int length,String word,char[]letters){
-    //WRITE THIS METHOD
+    if (length > 0){
+      for (int i = 0; i < letters.length; i++){
+        if (word.length() == 0 ||word.charAt(word.length() - 1) != letters[i]){
+          printNoDoubleLetterWords(length - 1, word + letters[i], letters);
+        }
+      }
+    }else{
+      System.out.println(word);
+    }
   }
+
 
   public static void main (String[] args){
     //printAllWords();
+    char[] letters = {'w', 'r', 'q'};
+    printNoDoubleLetterWords(4, letters);
   }
 }
