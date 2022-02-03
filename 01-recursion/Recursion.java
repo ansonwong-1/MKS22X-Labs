@@ -12,15 +12,13 @@ public class Recursion{
   *@param word   : the partial word so far.
   */
   public static void printAllWords(int length,String word){
-    //WRITE THIS METHOD
-  }
-  public static void makeWords(int size, String ans){
-    if (size > 0){
+    if (length > 0){
       for (char c = 'a'; c <= 'z'; c++){
-        makeWords(size - 1, ans + c);
+        printAllWords(length - 1, word + c);
       }
     }else{
-      System.out.println(ans);
+      System.out.println(word);
     }
   }
+
 }
