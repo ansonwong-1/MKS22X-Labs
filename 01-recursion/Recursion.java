@@ -71,9 +71,11 @@ public class Recursion{
     sqrt(n, 1);
   }
   //guess = ( n / guess + guess) / 2
-  public static double sqrt(double n, int guess){
-    if (Math.abs(a - b) / a < 0.00001){
-      
+  public static double sqrt(double n, double guess){
+    if (Math.abs(guess * guess - n) / n < 0.00001){
+      return guess;
+    }else{
+      return 
     }
   }
   public static void main (String[] args){
