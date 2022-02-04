@@ -63,6 +63,19 @@ public class Recursion{
     }
   }
 
+  /*
+  *@param n any non-negative value you want to take the sqrt of
+  *@return the approximate sqrt of n within a tolerance of 0.001%
+  */
+  public static double sqrt(double n){
+    sqrt(n, 1);
+  }
+  //guess = ( n / guess + guess) / 2
+  public static double sqrt(double n, int guess){
+    if (Math.abs(a - b) / a < 0.00001){
+      
+    }
+  }
   public static void main (String[] args){
     //printAllWords();
     // char[] letters = {'w', 'r', 'q'};
