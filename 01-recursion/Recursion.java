@@ -51,6 +51,10 @@ public class Recursion{
   }
 
 
+  /*
+  *@param s any string
+  *@return a string that is the reversed version of s, do NOT use built in methods to do so, use recursion.
+  */
   public static String reverse(String s){
     if (s.length() == 0){
       return s;
