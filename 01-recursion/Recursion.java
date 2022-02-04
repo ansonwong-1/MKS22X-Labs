@@ -68,21 +68,22 @@ public class Recursion{
   *@return the approximate sqrt of n within a tolerance of 0.001%
   */
   public static double sqrt(double n){
-    sqrt(n, 1);
+    return sqrt(n, 1);
   }
-  //guess = ( n / guess + guess) / 2
+
   public static double sqrt(double n, double guess){
     if (Math.abs(guess * guess - n) / n < 0.00001){
       return guess;
     }else{
-      return 
+      return sqrt(n, ( n / guess + guess) / 2);
     }
   }
   public static void main (String[] args){
     //printAllWords();
     // char[] letters = {'w', 'r', 'q'};
     // printNoDoubleLetterWords(4, letters);
-    System.out.println(reverse("1orkof"));
-    System.out.println(reverse(""));
+    // System.out.println(reverse("1orkof"));
+    // System.out.println(reverse(""));
+    System.out.println(sqrt(100));
   }
 }
