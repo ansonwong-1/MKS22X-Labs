@@ -103,9 +103,14 @@ public class Recursion{
   *@return the nth term of the fibonacci sequence. 0, 1, 1, 2, 3, 5 etc.
   */
   public static int fibIter(int n, int f1, int f2){
-    if (n == 1){
+    if (n == 0){
+      return f2;
+    }
+    else if (n == 1){
       return f1;
-    }return fibIter(n - 1, f2, f1 + f2);
+    }else{
+      return fibIter(n - 1, f1 + f2, f1);
+    }
   }
 
   public static void main (String[] args){
@@ -118,6 +123,6 @@ public class Recursion{
     //bad
     System.out.println(countNoDoubleLetterWords(3, ""));
     System.out.println(26*25*25);
-    System.out.println(fibIter(6, 0, 1));
+    System.out.println(fibIter(0, 1, 0));
   }
 }
