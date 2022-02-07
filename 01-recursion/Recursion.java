@@ -71,7 +71,7 @@ public class Recursion{
   }
 
   public static double sqrt(double n, double guess){
-    if (Math.abs(guess * guess - n) / n < 0.00001){
+    if (Math.abs(guess * guess - n) / ((guess * guess + n)/2) < 0.00001){
       return guess;
     }else{
       return sqrt(n, ( n / guess + guess) / 2);
