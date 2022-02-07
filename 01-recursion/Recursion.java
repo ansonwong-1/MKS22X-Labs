@@ -103,12 +103,9 @@ public class Recursion{
   *@return the nth term of the fibonacci sequence. 0, 1, 1, 2, 3, 5 etc.
   */
   public static int fibIter(int n, int f1, int f2){
-    if (n > 0){
-      System.out.println(f1 + "  " + f2);
-      fibIter(n - 1, f2, f1 + f2);
-    }else{
-      return 0;
-    }return f2;
+    if (n == 1){
+      return f1;
+    }return fibIter(n - 1, f2, f1 + f2);
   }
 
   public static void main (String[] args){
