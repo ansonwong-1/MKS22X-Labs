@@ -1,5 +1,5 @@
-public Classwork{
-  public static stringToInt(int n){
+public class Classwork{
+  public static String toWords(int n){
 
   }
 }
