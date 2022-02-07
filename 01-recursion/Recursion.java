@@ -50,7 +50,6 @@ public class Recursion{
     }
   }
 
-
   /*
   *@param s any string
   *@return a string that is the reversed version of s, do NOT use built in methods to do so, use recursion.
@@ -114,15 +113,14 @@ public class Recursion{
   }
 
   public static void main (String[] args){
-    //printAllWords();
-    // char[] letters = {'w', 'r', 'q'};
-    // printNoDoubleLetterWords(4, letters);
-    // System.out.println(reverse("1orkof"));
-    // System.out.println(reverse(""));
-    // System.out.println(sqrt(100));
-    //bad
+    printAllWords(4);
+    char[] letters = {'w', 'r', 'q'};
+    printNoDoubleLetterWords(4, letters);
+    System.out.println(reverse("1orkof"));
+    System.out.println(reverse(""));
+    System.out.println(sqrt(100));
     System.out.println(countNoDoubleLetterWords(3, ""));
     System.out.println(26*25*25);
-    System.out.println(fibIter(0, 1, 0));
+    System.out.println(fibIter(5, 1, 0));
   }
 }
