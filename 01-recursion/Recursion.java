@@ -85,26 +85,30 @@ public class Recursion{
   *@return the number of words that have no adjacent matching letters using the letters a-z.
   *Repetition allowed except when letters are adjacent.
   */
-//   if (length > 0){
-//   for (int i = 0; i < letters.length; i++){
-//     if (word.length() == 0 || word.charAt(word.length() - 1) != letters[i]){
-//       printNoDoubleLetterWords(length - 1, word + letters[i], letters);
-//     }
-//   }
-// }else{
-//   System.out.println(word);
-// }
   public static long countNoDoubleLetterWords(int length,String word){
     long count = 0;
     if (length > 0){
       for (char c = 'a'; c <= 'z'; c++){
         if (word.length() == 0 || word.charAt(word.length() - 1) != c){
-          count++;
+          count += countNoDoubleLetterWords(length - 1, word + c);
         }
       }
     }else{
+      return 1;
+    }return count;
+  }
+
+  /*
+  *@param n any non-negative value
+  *@return the nth term of the fibonacci sequence. 0, 1, 1, 2, 3, 5 etc.
+  */
+  public static int fibIter(int n, int f1, int f2){
+    if (n > 0){
+      System.out.println(f1 + "  " + f2);
+      fibIter(n - 1, f2, f1 + f2);
+    }else{
       return 0;
-    }return count + countNoDoubleLetterWords(length - 1, word);
+    }return f2;
   }
 
   public static void main (String[] args){
@@ -114,7 +118,9 @@ public class Recursion{
     // System.out.println(reverse("1orkof"));
     // System.out.println(reverse(""));
     // System.out.println(sqrt(100));
+    //bad
     System.out.println(countNoDoubleLetterWords(3, ""));
     System.out.println(26*25*25);
+    System.out.println(fibIter(6, 0, 1));
   }
 }
