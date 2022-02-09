@@ -7,13 +7,10 @@ public class Classwork{
   // groupSum(0, [2, 4, 8], 14) → true
   // groupSum(0, [2, 4, 8], 9) → false
   public static boolean groupSum(int start, int[] nums, int target) {
-    if (target > 0 && start != nums.length - 1){
-      System.out.println(target);
-      if (groupSum(start + 1, nums, target - nums[start])
-      || groupSum(start + 1, nums, target)){
-        return true;
-      }System.out.println(target);
-    }return target == 0;
+    if (start == nums.length){
+      return target == 0;
+    }return groupSum(start + 1, nums, target - nums[start])
+    || groupSum(start + 1, nums, target);
   }
   public static void main(String[] args){
     int[] arr = {2, 4, 8};
