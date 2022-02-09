@@ -24,12 +24,6 @@ public class Classwork{
   // }
 
 
-  // Given an array of ints, is it possible to choose a group of some of the ints, beginning at the start index, such that the group sums to the given target? However, with the additional constraint that all 6's must be chosen. (No loops needed.)
-  //
-  //
-  // groupSum6(0, [5, 6, 2], 8) → true
-  // groupSum6(0, [5, 6, 2], 9) → false
-  // groupSum6(0, [5, 6, 2], 7) → false
   public static boolean groupSum6(int start, int[] nums, int target) {
     if (start == nums.length){
       return target == 0;
@@ -37,6 +31,22 @@ public class Classwork{
       return groupSum6(start + 1, nums, target - nums[start]);
     }return groupSum6(start + 1, nums, target - nums[start])
     || groupSum6(start + 1, nums, target);
+  }
+
+
+  // Given an array of ints, is it possible to choose a group of some of the ints, such that the group sums to the given target with these additional constraints: all multiples of 5 in the array must be included in the group. If the value immediately following a multiple of 5 is 1, it must not be chosen. (No loops needed.)
+  //
+  //
+  // groupSum5(0, [2, 5, 10, 4], 19) → true
+  // groupSum5(0, [2, 5, 10, 4], 17) → true
+  // groupSum5(0, [2, 5, 10, 4], 12) → false
+  public static boolean groupSum5(int start, int[] nums, int target) {
+    if (start == nums.length){
+      return target == 0;
+    }if (num[start] % 5 == 0){
+      return groupSum5(start + 1, nums, target - nums[start]);
+      if ()
+    }
   }
 
   public static void main(String[] args){
