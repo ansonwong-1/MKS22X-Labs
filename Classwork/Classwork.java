@@ -43,15 +43,18 @@ public class Classwork{
   public static boolean groupSum5(int start, int[] nums, int target) {
     if (start == nums.length){
       return target == 0;
-    }if (num[start] % 5 == 0){
-      return groupSum5(start + 1, nums, target - nums[start]);
-      if ()
-    }
+    }if (nums[start] % 5 == 0){
+      groupSum5(start + 1, nums, target - nums[start]);
+      if (nums[start] == 1){
+        groupSum5(start + 1, nums, target);
+      }
+    }return groupSum5(start + 1, nums, target)
+    || groupSum5(start + 1, nums, target - nums[start]);
   }
 
   public static void main(String[] args){
-    int[] arr = {5, 6, 2};
-    System.out.println(groupSum6(0, arr, 8));
-    System.out.println(groupSum6(0, arr, 9));
+    int[] arr = {2, 5, 10, 4};
+    System.out.println(groupSum5(0, arr, 19));
+    System.out.println(groupSum5(0, arr, 9));
   }
 }
