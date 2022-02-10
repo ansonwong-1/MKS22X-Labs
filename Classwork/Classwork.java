@@ -7,8 +7,8 @@ public class Classwork{
     }else if(start == nums.length){
       return false;
     }else{
-      return groupSum(start + 1, nums, target - nums[start])
-      || groupSum(start + 1, nums, target);
+      return groupSum(start + 1, nums, target - nums[start]) ||
+             groupSum(start + 1, nums, target);
     }
   }
 
@@ -18,16 +18,17 @@ public class Classwork{
   // splitArray([2, 2]) → true
   // splitArray([2, 3]) → false
   // splitArray([5, 2, 3]) → true
-  // public static boolean splitArray(int[] nums) {
-  //   for (int i = 0, i < nums.length; i++){
-  //
-  //   }
-  // }
-  // public static boolean splitArray(int index, int[] nums){
-  //   if(index == nums.length){
-  //     return false;
-  //   }
-  // }
+  public static boolean splitArray(int[] nums) {
+    return splitArray(0, 0, 0, nums);
+  }
+  public static boolean splitArray(int index, int groupSum1, int groupSum2, int[] nums){
+    if(index == nums.length){
+      return groupSum1 == groupSum2;
+    }else{
+      return splitArray(index + 1, groupSum1 + nums[index], groupSum2, nums) ||
+             splitArray(index + 1, groupSum1, groupSum2 + nums[index], nums);
+    }
+  }
 
 
   public static boolean groupSum6(int start, int[] nums, int target) {
@@ -59,8 +60,8 @@ public class Classwork{
   }
 
   public static void main(String[] args){
-    int[] arr = {2, 5, 10, 4};
-    System.out.println(groupSum5(0, arr, 19));
+    int[] arr = {2, 2};
+    System.out.println(splitArray(arr));
     System.out.println(groupSum5(0, arr, 9));
   }
 }
