@@ -79,11 +79,11 @@ public class Classwork{
   public static boolean groupSumClump(int start, int[] nums, int target) {
     if (start == nums.length){ //not sure but maybe cause have to find all adj
       return target == 0;
-    }int allAdj;
+    }int adj = 0;
     int i = start;
     while( i < nums.length && nums[i] == nums[start]){
-      allAdj += nums[start];
-    }return groupSumClump(i, nums, target - allAdj) ||
+      adj += nums[start];
+    }return groupSumClump(i, nums, target - adj) ||
             groupSumClump(i, nums, target);
   }
 
