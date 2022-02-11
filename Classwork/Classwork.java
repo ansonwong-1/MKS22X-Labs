@@ -80,7 +80,8 @@ public class Classwork{
     if (start == nums.length){ //not sure but maybe cause have to find all adj
       return target == 0;
     }int allAdj;
-    for (int i = start; i < nums.length && nums[i] == nums[start]; i++){
+    int i = start;
+    while( i < nums.length && nums[i] == nums[start]){
       allAdj += nums[start];
     }return groupSumClump(i, nums, target - allAdj) ||
             groupSumClump(i, nums, target);
