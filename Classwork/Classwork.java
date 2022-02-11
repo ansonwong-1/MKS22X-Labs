@@ -44,16 +44,27 @@ public class Classwork{
             groupSum5(start + 1, nums, target - nums[start]);
   }
 
-
   public static boolean groupNoAdj(int start, int[] nums, int target) {
-    if (start == nums.length){
+    if (start >= nums.length){ //cause this one has errors otherwise cause the + 2 can make it go over
       return target == 0;
-    }if 
+    }return groupNoAdj(start + 1, nums, target) ||
+            groupNoAdj(start + 2, nums, target - nums[start]);
   }
+
+  public static boolean splitOdd10(int[] nums) {
+    return splitOdd10(0, 0, 0, nums);
+  }
+  public static boolean splitOdd10(int start, int group10, int groupOdd, int[] nums){
+    if (start == nums.length){
+      return group10 % 10 == 0 && groupOdd % 2 == 1;
+    }return splitOdd10(start + 1, group10 + nums[start], groupOdd, nums) ||
+            splitOdd10(start + 1, group10, groupOdd + nums[start], nums);
+  }
+
   public static void main(String[] args){
     int[] arr = {3, 5, 1};
-    System.out.println(groupSum5(0, arr, 5));
-    System.out.println(groupSum5(0, arr, 8));
+    System.out.println(groupNoAdj(0, arr, 5));
+    System.out.println(groupNoAdj(0, arr, 8));
     System.out.println(groupSum5(0, arr, 19));
     int[] nums = {2, 5, 1, 8};
     System.out.println(groupSum5(0, nums, 6));
