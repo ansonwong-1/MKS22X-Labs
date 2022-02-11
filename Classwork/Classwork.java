@@ -61,6 +61,31 @@ public class Classwork{
             splitOdd10(start + 1, group10, groupOdd + nums[start], nums);
   }
 
+  public static boolean split53(int[] nums) {
+    return split53(0, 0, 0, nums);
+  }
+
+  public static boolean split53(int start, int group5, int group3, int[] nums){
+    if (start == nums.length){
+      return group5 == group3;
+    }if (nums[start] % 5 == 0){
+      return split53(start + 1, group5 + nums[start], group3, nums);
+    }else if (nums[start] % 3 == 0){
+      return split53(start + 1, group5, group3 + nums[start], nums);
+    }return split53(start + 1, group5 + nums[start], group3, nums) ||
+            split53(start + 1, group5, group3 + nums[start], nums);
+  }
+
+  public static boolean groupSumClump(int start, int[] nums, int target) {
+    if (start == nums.length){ //not sure but maybe cause have to find all adj
+      return target == 0;
+    }int allAdj;
+    for (int i = start; i < nums.length && nums[i] == nums[start]; i++){
+      allAdj += nums[start];
+    }return groupSumClump(i, nums, target - allAdj) ||
+            groupSumClump(i, nums, target);
+  }
+
   public static void main(String[] args){
     int[] arr = {3, 5, 1};
     System.out.println(groupNoAdj(0, arr, 5));
