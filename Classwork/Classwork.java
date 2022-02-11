@@ -83,6 +83,7 @@ public class Classwork{
     int i = start;
     while( i < nums.length && nums[i] == nums[start]){
       adj += nums[start];
+      i++;
     }return groupSumClump(i, nums, target - adj) ||
             groupSumClump(i, nums, target);
   }
