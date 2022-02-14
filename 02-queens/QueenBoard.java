@@ -1,6 +1,13 @@
 public class QueenBoard{
   private int[][]board;
-  
+  public QueenBoard(int size){
+    board = new int[size][size];
+    for(int i = 0; i < size; i++){
+      for (int j = 0; j < size; j++){
+        board[i][j] = 0;
+      }
+    }
+  }
   /**
   *@return The output string formatted as follows:
   *All numbers that represent queens are replaced with 'Q'
@@ -42,6 +49,7 @@ public class QueenBoard{
   *        returns true when the board is solveable, and leaves the board in a solved state
   *@throws IllegalStateException when the board starts with any non-zero value (e.g. you solved a 2nd time.)
   */
+  //solve & countSolutions are wrappers
   public boolean solve(){}
 
   /**Find all possible solutions to this size board.
