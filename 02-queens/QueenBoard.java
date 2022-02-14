@@ -41,20 +41,63 @@ public class QueenBoard{
   *@precondition r and c are valid indices of the board array
   *@postcondition the board is only changed when the function returns true
   * in which case the queen is added and all it's threatened positions are incremented
-  // */
-  // private boolean addQueen(int r, int c){
-  //
-  // }
-  //
-  // /**Remove the queen that was added to r,c
-  // *@precondition r and c are valid indices of the board array and there is a queen at position r,c
-  // *@postcondition the board is modified to remove that queen and all it's
-  // *threatened positions are decremented
-  // */
-  // private void removeQueen(int r, int c){
-  //
-  // }
-  //
+  */
+  private boolean addQueen(int r, int c){
+    if (board[r][c] != 0){
+      return false;
+    }else{
+      board[r][c] = -1;
+      threatened(r, c, false);
+    }return true;
+  }
+
+  private void threatened(int r, int c, boolean dec){
+    if (dec){
+      for(int i = r; i < board.length; i++){
+        board[i][c]--;
+      }
+      for(int i = c; i < board.length; i++){
+        board[r][i]--;
+      }
+      for(int i = r; i < board.length; i++){
+        for(int j = c; j < board.length; j++){
+          board[r][c]--;
+        }
+      }
+      for(int i = r; i < board.length; i++){
+        for(int j = c; j >= 0; j--){
+          board[r][c]--;
+        }
+      }
+    }else{
+      for(int i = r; i < board.length; i++){
+        board[i][c]++;
+      }
+      for(int i = c; i < board.length; i++){
+        board[r][i]++;
+      }
+      for(int i = r; i < board.length; i++){
+        for(int j = c; j < board.length; j++){
+          board[r][c]++;
+        }
+      }
+      for(int i = r; i < board.length; i++){
+        for(int j = c; j >= 0; j--){
+          board[r][c]++;
+        }
+      }
+    }
+  }
+  /**Remove the queen that was added to r,c
+  *@precondition r and c are valid indices of the board array and there is a queen at position r,c
+  *@postcondition the board is modified to remove that queen and all it's
+  *threatened positions are decremented
+  */
+  private void removeQueen(int r, int c){
+    board[r][c]++;
+    threatened(r, c, true);
+  }
+
   // /**Find the first solution configuration possible for this size board. Start by placing
   // *  the 1st queen in the top left corner, and each new queen in the next ROW. When backtracking
   // *  move the previous queen to the next valid space. This means everyone will generate the same
