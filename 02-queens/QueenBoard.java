@@ -1,8 +1,10 @@
 public class QueenBoard{
   private int[][]board;
   public static void main (String[] args){
-    QueenBoard board = new QueenBoard(4);
+    QueenBoard board = new QueenBoard(6);
     board.addQueen(2, 2);
+    System.out.println(board.toString());
+    board.removeQueen(2, 2);
     System.out.println(board.toString());
   }
   public QueenBoard(int size){
@@ -28,7 +30,7 @@ public class QueenBoard{
     String ans = "";
     for (int i = 0; i < board.length; i++){
       for (int j = 0; j < board.length; j++){
-        ans += board[i][j];
+        ans += board[i][j] + "  ";
         // if (board[i][j] == -1){
         //   ans += "Q ";
         // }else{
@@ -52,11 +54,11 @@ public class QueenBoard{
       for(int i = r + 1; i < board.length; i++){
         board[i][c]++;
       }
-      for(int i = r + 1; i < board.length; i++){
+      for(int i = r + 1; i < board.length && c + i - r < board.length; i++){
         board[i][c + i - r]++;
       }
-      for(int i = r + 1; i < board.length; i++){
-        board[i][c- i + r]++;
+      for(int i = r + 1; i < board.length && c - i + r >= 0; i++){
+        board[i][c - i + r]++;
       }
     }return true;
   }
@@ -66,11 +68,19 @@ public class QueenBoard{
   *@precondition r and c are valid indices of the board array and there is a queen at position r,c
   *@postcondition the board is modified to remove that queen and all it's
   *threatened positions are decremented
-  // */
-  // private void removeQueen(int r, int c){
-  //   board[r][c]++;
-  //
-  // }
+  */
+  private void removeQueen(int r, int c){
+    board[r][c]++;
+    for(int i = r + 1; i < board.length; i++){
+      board[i][c]--;
+    }
+    for(int i = r + 1; i < board.length && c + i - r < board.length; i++){
+      board[i][c + i - r]--;
+    }
+    for(int i = r + 1; i < board.length && c - i + r >= 0; i++){
+      board[i][c - i + r]--;
+    }
+  }
 
   // /**Find the first solution configuration possible for this size board. Start by placing
   // *  the 1st queen in the top left corner, and each new queen in the next ROW. When backtracking
