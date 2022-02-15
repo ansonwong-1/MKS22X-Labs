@@ -1,11 +1,14 @@
+import java.util.*;
+import java.io.*;
 public class QueenBoard{
   private int[][]board;
   public static void main (String[] args){
-    QueenBoard board = new QueenBoard(6);
-    board.addQueen(2, 2);
-    System.out.println(board.toString());
-    board.removeQueen(2, 2);
-    System.out.println(board.toString());
+    QueenBoard board = new QueenBoard(4);
+    System.out.println(Text.CLEAR_SCREEN);
+          System.out.println(Text.HIDE_CURSOR);
+          System.out.println(Text.go(1,1));
+          board.solve();
+          System.out.println(Text.RESET);
   }
   public QueenBoard(int size){
     board = new int[size][size];
@@ -82,21 +85,58 @@ public class QueenBoard{
     }
   }
 
-  // /**Find the first solution configuration possible for this size board. Start by placing
-  // *  the 1st queen in the top left corner, and each new queen in the next ROW. When backtracking
-  // *  move the previous queen to the next valid space. This means everyone will generate the same
-  // *  first solution.
-  // *@postcondition: the board remains in a solved state.
-  // *@return false when the board is not solveable and leaves the board filled with zeros;
-  // *        returns true when the board is solveable, and leaves the board in a solved state
-  // *@throws IllegalStateException when the board starts with any non-zero value (e.g. you solved a 2nd time.)
-  // */
-  // //solve & countSolutions are wrappers
-  // public boolean solve(){}
-  //
-  // /**Find all possible solutions to this size board.
-  // *@return the number of solutions found, and leaves the board filled with only 0's
-  // *@throws IllegalStateException when the board starts with any non-zero value (e.g. you ran solve() before this method)
-  // */
+  /**Find the first solution configuration possible for this size board. Start by placing
+  *  the 1st queen in the top left corner, and each new queen in the next ROW. When backtracking
+  *  move the previous queen to the next valid space. This means everyone will generate the same
+  *  first solution.
+  *@postcondition: the board remains in a solved state.
+  *@return false when the board is not solveable and leaves the board filled with zeros;
+  *        returns true when the board is solveable, and leaves the board in a solved state
+  *@throws IllegalStateException when the board starts with any non-zero value (e.g. you solved a 2nd time.)
+  */
+  //solve & countSolutions are wrappers
+  public boolean solve(){
+    return solve(0);
+  }
+  public boolean solve(int row) throws IllegalStateException{
+    if (row == 0){
+      for (int i = 0; i < board.length; i++){
+        for (int j = 0; j < board.length; j++){
+          if (board[i][j] != 0){
+            throw new IllegalStateException("board is not cleared");
+          }
+        }
+      }
+    }
+    //i thin kthis is wrong
+    if(row == board.length - 1){
+      for(int i = 0; i < board.length; i++){
+        if(board[row][i] == -1){
+          return true;
+        }
+      }
+    }
+    else{
+      for(int col = 0; col < board.length; col++){
+        if(addQueen(row, col)){
+          System.out.println(Text.go(1,1));
+          System.out.println(this);//can change this to your debug print as well
+          Text.wait(1500);//change the delay 1000 = 1 second
+          if(solve(row + 1)){
+            return true;
+          }removeQueen(row, col);
+          System.out.println(Text.go(1,1));
+          System.out.println(this);//can change this to your debug print as well
+          Text.wait(1500);//change the delay 1000 = 1 second
+
+        }
+      }
+    }return false;
+  }
+
+  /**Find all possible solutions to this size board.
+  *@return the number of solutions found, and leaves the board filled with only 0's
+  *@throws IllegalStateException when the board starts with any non-zero value (e.g. you ran solve() before this method)
+  */
   // public int countSolutions(){}
 }
