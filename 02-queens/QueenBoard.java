@@ -2,6 +2,7 @@ public class QueenBoard{
   private int[][]board;
   public static void main (String[] args){
     QueenBoard board = new QueenBoard(4);
+    board.addQueen(2, 2);
     System.out.println(board.toString());
   }
   public QueenBoard(int size){
@@ -27,11 +28,12 @@ public class QueenBoard{
     String ans = "";
     for (int i = 0; i < board.length; i++){
       for (int j = 0; j < board.length; j++){
-        if (board[i][j] == -1){
-          ans += "Q ";
-        }else{
-          ans += "_ ";
-        }
+        ans += board[i][j];
+        // if (board[i][j] == -1){
+        //   ans += "Q ";
+        // }else{
+        //   ans += "_ ";
+        // }
       }ans += '\n';
     }return ans;
   }
@@ -47,56 +49,28 @@ public class QueenBoard{
       return false;
     }else{
       board[r][c] = -1;
-      threatened(r, c, false);
+      for(int i = r + 1; i < board.length; i++){
+        board[i][c]++;
+      }
+      for(int i = r + 1; i < board.length; i++){
+        board[i][c + i - r]++;
+      }
+      for(int i = r + 1; i < board.length; i++){
+        board[i][c- i + r]++;
+      }
     }return true;
   }
 
-  private void threatened(int r, int c, boolean dec){
-    if (dec){
-      for(int i = r; i < board.length; i++){
-        board[i][c]--;
-      }
-      for(int i = c; i < board.length; i++){
-        board[r][i]--;
-      }
-      for(int i = r; i < board.length; i++){
-        for(int j = c; j < board.length; j++){
-          board[r][c]--;
-        }
-      }
-      for(int i = r; i < board.length; i++){
-        for(int j = c; j >= 0; j--){
-          board[r][c]--;
-        }
-      }
-    }else{
-      for(int i = r; i < board.length; i++){
-        board[i][c]++;
-      }
-      for(int i = c; i < board.length; i++){
-        board[r][i]++;
-      }
-      for(int i = r; i < board.length; i++){
-        for(int j = c; j < board.length; j++){
-          board[r][c]++;
-        }
-      }
-      for(int i = r; i < board.length; i++){
-        for(int j = c; j >= 0; j--){
-          board[r][c]++;
-        }
-      }
-    }
-  }
+
   /**Remove the queen that was added to r,c
   *@precondition r and c are valid indices of the board array and there is a queen at position r,c
   *@postcondition the board is modified to remove that queen and all it's
   *threatened positions are decremented
-  */
-  private void removeQueen(int r, int c){
-    board[r][c]++;
-    threatened(r, c, true);
-  }
+  // */
+  // private void removeQueen(int r, int c){
+  //   board[r][c]++;
+  //
+  // }
 
   // /**Find the first solution configuration possible for this size board. Start by placing
   // *  the 1st queen in the top left corner, and each new queen in the next ROW. When backtracking
