@@ -4,6 +4,12 @@ public class QueenBoard{
   private int[][]board;
   public static void main (String[] args){
     QueenBoard board = new QueenBoard(4);
+    // board.addQueen(0, 1);
+    // System.out.println(board.toString());
+    // board.addQueen(1, 3);
+    // System.out.println(board.toString());
+    // board.removeQueen(1,3);
+    // System.out.println(board.toString());
     System.out.println(Text.CLEAR_SCREEN);
           System.out.println(Text.HIDE_CURSOR);
           System.out.println(Text.go(1,1));
@@ -108,13 +114,8 @@ public class QueenBoard{
         }
       }
     }
-    //i thin kthis is wrong
-    if(row == board.length - 1){
-      for(int i = 0; i < board.length; i++){
-        if(board[row][i] == -1){
-          return true;
-        }
-      }
+    if(row == board.length){
+      return true;
     }
     else{
       for(int col = 0; col < board.length; col++){
