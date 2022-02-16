@@ -7,7 +7,7 @@ public class QueenBoard{
   private int delay;
   // - the wait time in your animation, defaults to 1000.
   public static void main (String[] args){
-    QueenBoard board = new QueenBoard(4);
+    QueenBoard board = new QueenBoard(8);
     System.out.println(Text.CLEAR_SCREEN);
     System.out.println(Text.HIDE_CURSOR);
     System.out.println(Text.go(1,1));
@@ -47,12 +47,12 @@ public class QueenBoard{
     String ans = "";
     for (int i = 0; i < board.length; i++){
       for (int j = 0; j < board.length; j++){
-        ans += board[i][j] + "  ";
-        // if (board[i][j] == -1){
-        //   ans += "Q ";
-        // }else{
-        //   ans += "_ ";
-        // }
+        // ans += board[i][j] + "  ";
+        if (board[i][j] == -1){
+          ans += "Q ";
+        }else{
+          ans += "_ ";
+        }
       }ans += '\n';
     }return ans;
   }
@@ -123,6 +123,7 @@ public class QueenBoard{
       }
     }
     if(row == board.length){
+      System.out.println(board.toString());
       return true;
     }
     else{
@@ -153,7 +154,17 @@ public class QueenBoard{
   public int countSolutions(){
 
   }
-  public int countSolutions(int count, smtg){
-    if(row == )
-  }
+  public int countSolutions(int count, smtg)throws IllegalStateException{
+    if (row == 0){
+      for (int i = 0; i < board.length; i++){
+        for (int j = 0; j < board.length; j++){
+          if (board[i][j] != 0){
+            throw new IllegalStateException("board is not cleared");
+          }
+        }
+      }
+    }
+    if(row == board.length){
+      countSolutions(count + 1, idk);
+    }
 }
