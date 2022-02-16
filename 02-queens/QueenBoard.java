@@ -2,6 +2,10 @@ import java.util.*;
 import java.io.*;
 public class QueenBoard{
   private int[][]board;
+  private boolean animated;
+  // - solve will print the animation when this is true, print nothing otherwise. The default value is false.
+  private int delay;
+  // - the wait time in your animation, defaults to 1000.
   public static void main (String[] args){
     QueenBoard board = new QueenBoard(4);
     // board.addQueen(0, 1);
@@ -120,16 +124,19 @@ public class QueenBoard{
     else{
       for(int col = 0; col < board.length; col++){
         if(addQueen(row, col)){
-          System.out.println(Text.go(1,1));
-          System.out.println(this);//can change this to your debug print as well
-          Text.wait(1500);//change the delay 1000 = 1 second
+          if(animated){
+            System.out.println(Text.go(1,1));
+            System.out.println(this);//can modify here
+            Text.wait(delay);
+          }
           if(solve(row + 1)){
             return true;
           }removeQueen(row, col);
-          System.out.println(Text.go(1,1));
-          System.out.println(this);//can change this to your debug print as well
-          Text.wait(1500);//change the delay 1000 = 1 second
-
+          if(animated){
+            System.out.println(Text.go(1,1));
+            System.out.println(this);//can modify here
+            Text.wait(delay);
+          }
         }
       }
     }return false;
@@ -139,5 +146,7 @@ public class QueenBoard{
   *@return the number of solutions found, and leaves the board filled with only 0's
   *@throws IllegalStateException when the board starts with any non-zero value (e.g. you ran solve() before this method)
   */
-  // public int countSolutions(){}
+  public int countSolutions(){
+
+  }
 }
