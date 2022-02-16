@@ -20,7 +20,8 @@ public class QueenBoard{
       for (int j = 0; j < size; j++){
         board[i][j] = 0;
       }
-    }
+    }animated = false;
+    delay = 1000;
   }
   public void setAnimate(boolean newValue){
     animated = newValue;
@@ -151,5 +152,8 @@ public class QueenBoard{
   */
   public int countSolutions(){
 
+  }
+  public int countSolutions(int count, smtg){
+    if(row == )
   }
 }
