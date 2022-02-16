@@ -8,17 +8,11 @@ public class QueenBoard{
   // - the wait time in your animation, defaults to 1000.
   public static void main (String[] args){
     QueenBoard board = new QueenBoard(4);
-    // board.addQueen(0, 1);
-    // System.out.println(board.toString());
-    // board.addQueen(1, 3);
-    // System.out.println(board.toString());
-    // board.removeQueen(1,3);
-    // System.out.println(board.toString());
     System.out.println(Text.CLEAR_SCREEN);
-          System.out.println(Text.HIDE_CURSOR);
-          System.out.println(Text.go(1,1));
-          board.solve();
-          System.out.println(Text.RESET);
+    System.out.println(Text.HIDE_CURSOR);
+    System.out.println(Text.go(1,1));
+    board.solve();
+    System.out.println(Text.RESET);
   }
   public QueenBoard(int size){
     board = new int[size][size];
@@ -27,6 +21,15 @@ public class QueenBoard{
         board[i][j] = 0;
       }
     }
+  }
+  public void setAnimate(boolean newValue){
+    animated = newValue;
+  }
+
+  public void setDelay(int newValue){
+    if(newValue < 0){
+      newValue = 0;
+    }delay = newValue;
   }
   /**
   *@return The output string formatted as follows:
