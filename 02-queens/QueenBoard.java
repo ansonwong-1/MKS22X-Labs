@@ -3,16 +3,14 @@ import java.io.*;
 public class QueenBoard{
   private int[][]board;
   private boolean animated;
-  // - solve will print the animation when this is true, print nothing otherwise. The default value is false.
   private int delay;
-  // - the wait time in your animation, defaults to 1000.
   public static void main (String[] args){
-    QueenBoard board = new QueenBoard(8);
-    System.out.println(Text.CLEAR_SCREEN);
-    System.out.println(Text.HIDE_CURSOR);
-    System.out.println(Text.go(1,1));
-    board.solve();
-    System.out.println(Text.RESET);
+    QueenBoard boa = new QueenBoard(2);
+    System.out.println(boa.countSolutions());
+    QueenBoard aboa = new QueenBoard(4);
+    System.out.println(aboa.countSolutions());
+    QueenBoard asboa = new QueenBoard(6);
+    System.out.println(asboa.countSolutions());
   }
   public QueenBoard(int size){
     board = new int[size][size];
@@ -152,9 +150,9 @@ public class QueenBoard{
   *@throws IllegalStateException when the board starts with any non-zero value (e.g. you ran solve() before this method)
   */
   public int countSolutions(){
-
+    return countSolutions(0);
   }
-  public int countSolutions(int count, smtg)throws IllegalStateException{
+  public int countSolutions(int row)throws IllegalStateException{
     if (row == 0){
       for (int i = 0; i < board.length; i++){
         for (int j = 0; j < board.length; j++){
@@ -164,7 +162,16 @@ public class QueenBoard{
         }
       }
     }
+    int count = 0;
     if(row == board.length){
-      countSolutions(count + 1, idk);
+      return 1;
+    }else{
+      for(int col = 0; col < board.length; col++){
+        if(addQueen(row, col)){
+          count += countSolutions(row + 1);
+          removeQueen(row, col);
+          }
+        }
+      }return count;
     }
 }
