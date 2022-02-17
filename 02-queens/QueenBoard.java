@@ -4,14 +4,7 @@ public class QueenBoard{
   private int[][]board;
   private boolean animated;
   private int delay;
-  public static void main (String[] args){
-    QueenBoard boa = new QueenBoard(2);
-    System.out.println(boa.countSolutions());
-    QueenBoard aboa = new QueenBoard(4);
-    System.out.println(aboa.countSolutions());
-    QueenBoard asboa = new QueenBoard(6);
-    System.out.println(asboa.countSolutions());
-  }
+
   public QueenBoard(int size){
     board = new int[size][size];
     for(int i = 0; i < size; i++){
@@ -121,7 +114,6 @@ public class QueenBoard{
       }
     }
     if(row == board.length){
-      System.out.println(board.toString());
       return true;
     }
     else{
@@ -142,7 +134,13 @@ public class QueenBoard{
           }
         }
       }
-    }return false;
+    }
+    for(int i = 0; i < board.length; i++){
+      for (int j = 0; j < board.length; j++){
+        board[i][j] = 0;
+      }
+    }
+    return false;
   }
 
   /**Find all possible solutions to this size board.
@@ -172,6 +170,12 @@ public class QueenBoard{
           removeQueen(row, col);
           }
         }
-      }return count;
+      }
+      for(int i = 0; i < board.length; i++){
+        for (int j = 0; j < board.length; j++){
+          board[i][j] = 0;
+        }
+      }
+      return count;
     }
 }
