@@ -11,7 +11,7 @@ public class AoC{
       System.out.println("ERROR: File not found");
     }
   }
-  public static int day2(File file){
+  public static int day1b(File file){
     int count = 0;
     try{
       Scanner in = new Scanner(file);
