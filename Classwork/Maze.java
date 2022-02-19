@@ -12,20 +12,16 @@ public class Maze{
     }
   }
 
-  public static char[][] mazeToArr(File file){
-    Arraylist<String> rows = new Arraylist<String>();
-    try{
-      Scanner in = new Scanner(file);
-      while(in.hasNext()){
-        rows.add(in.next());
-      }int c = (rows.get(0)).length;
-      char[][]maze = new char[rows.size()][c];
-      for (int i = 0; i < rows.size(); i++){
-        maze[i] = (rows.get(i)).toCharArray();
-      }return maze;
-    }catch (FileNotFoundException e){
-      return null;
-    }
+  public static char[][] mazeToArr(File file) throws FileNotFoundException{
+    ArrayList<String> rows = new ArrayList<String>();
+    Scanner in = new Scanner(file);
+    while(in.hasNext()){
+      rows.add(in.next());
+    }int c = (rows.get(0)).length();
+    char[][]maze = new char[rows.size()][c];
+    for (int i = 0; i < rows.size(); i++){
+      maze[i] = (rows.get(i)).toCharArray();
+    }return maze;
   }
   public static String toString(char[][] arr){
     String ans = "";
