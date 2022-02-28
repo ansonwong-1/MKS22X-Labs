@@ -21,15 +21,19 @@ public class Maze{
   Make sure your file reading is able to handle this.
   */
   public Maze(String filename) throws FileNotFoundException{
-    ArrayList<String> rows = new ArrayList<String>();
-    File file = new File(filename);
-    Scanner in = new Scanner(file);
-    while(in.hasNextLine()){
-      rows.add(in.nextLine());
-    }int c = (rows.get(0)).length();
-    maze = new char[rows.size()][c];
-    for (int i = 0; i < rows.size(); i++){
-      maze[i] = (rows.get(i)).toCharArray();
+    try{
+      ArrayList<String> rows = new ArrayList<String>();
+      File file = new File(filename);
+      Scanner in = new Scanner(file);
+      while(in.hasNextLine()){
+        rows.add(in.nextLine());
+      }int c = (rows.get(0)).length();
+      maze = new char[rows.size()][c];
+      for (int i = 0; i < rows.size(); i++){
+        maze[i] = (rows.get(i)).toCharArray();
+      }
+    }catch (FileNotFoundException e){
+      System.out.println("No file found");
     }
   }
 
