@@ -58,7 +58,7 @@ public class Maze{
   It should look like the text file with some characters replaced.
   */
   public String toString(){
-    return "WRITE THIS METHOD";
+    return Arrays.deepToString(maze);
   }
 
   /*Wrapper Solve Function returns the helper function
