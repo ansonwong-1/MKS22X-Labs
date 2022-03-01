@@ -32,6 +32,16 @@ public class Maze{
       for (int i = 0; i < rows.size(); i++){
         maze[i] = (rows.get(i)).toCharArray();
       }
+      boolean startFound = false;
+      for (int i = 0; i < maze.length && !startFound; i++){
+        for (int j = 0 ; j < maze[i].length && !startFound; j++){
+          if (maze[i][j] == 'S'){
+            startRow = i;
+            startCol = j;
+            startFound = true;
+          }
+        }
+      }
     }catch (FileNotFoundException e){
       System.out.println("No file found");
     }
@@ -53,6 +63,7 @@ public class Maze{
     //erase terminal
     System.out.println("\033[2J");
   }
+
   public static void gotoTop(){
     //go to top left of screen
     System.out.println("\033[1;1H");
@@ -76,7 +87,6 @@ public class Maze{
     }
     //start solving at the location of the s.
     return solve(startRow,startCol);
-
   }
 
   /*
@@ -95,12 +105,12 @@ public class Maze{
   */
   private int solve(int row, int col){ //you can add more parameters since this is private
     //automatic animation! You are welcome.
+
     if(animate){
       gotoTop();
       System.out.println(this);
       wait(50);
     }
-
     //COMPLETE SOLVE
     return -1; //so it compiles
   }
