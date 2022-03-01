@@ -123,6 +123,16 @@ public class Maze{
         }
       }
     }
+
+    int count = 0;
+
+    /*
+    while there are empty spaces
+    check in four directions {{0, 1}, {0, -1}, {1, 0}, {-1, 0}} for an empty space
+    if E is in one of the spaces-> return the number of squares with @
+    if one is found-> go there
+    if dead end-> backtrack and put periods
+    */
     if(animate){
       gotoTop();
       System.out.println(this);
