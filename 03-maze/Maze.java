@@ -3,7 +3,7 @@ import java.io.*;
 public class Maze{
   private char[][]maze;
   private boolean animate;//false by default
-  private int startRow,startCol;
+  private int startRow, startCol;
 
   /*Constructor loads a maze text file, and sets animate to false by default.
   When the file is not found then:
@@ -32,13 +32,18 @@ public class Maze{
       for (int i = 0; i < rows.size(); i++){
         maze[i] = (rows.get(i)).toCharArray();
       }
+      animate = false;
       boolean startFound = false;
-      for (int i = 0; i < maze.length && !startFound; i++){
-        for (int j = 0 ; j < maze[i].length && !startFound; j++){
+      boolean endFound = false;
+      for (int i = 0; i < maze.length || (!startFound && !endFound); i++){
+        for (int j = 0 ; j < maze[i].length || (!startFound && !endFound); j++){
           if (maze[i][j] == 'S'){
             startRow = i;
             startCol = j;
             startFound = true;
+          }
+          if (maze[i][j] == 'E'){
+            endFound = true;
           }
         }
       }
@@ -105,7 +110,19 @@ public class Maze{
   */
   private int solve(int row, int col){ //you can add more parameters since this is private
     //automatic animation! You are welcome.
-
+    boolean endFound = false;
+    int endRow, endCol;
+    while(!endFound){
+      for(int i = 0; i < maze.length; i++){
+        for (int j = 0; j < maze[i].length; j++){
+          if(maze[i][j] == 'E'){
+            endRow = i;
+            endCol = j;
+            endFound = true;
+          }
+        }
+      }
+    }
     if(animate){
       gotoTop();
       System.out.println(this);
