@@ -42,9 +42,6 @@ public class Maze{
             startCol = j;
             startFound = true;
           }
-          if (maze[i][j] == 'E'){
-            endFound = true;
-          }
         }
       }
     }catch (FileNotFoundException e){
@@ -78,7 +75,12 @@ public class Maze{
   It should look like the text file with some characters replaced.
   */
   public String toString(){
-    return Arrays.deepToString(maze);
+    String ans = "";
+    for (int i = 0; i < maze.length; i++){
+      for(int j = 0; j < maze[i].length; j++){
+        ans += maze[i][j];
+      }ans += '\n';
+    }return ans;
   }
 
   /*Wrapper Solve Function returns the helper function
@@ -108,6 +110,7 @@ public class Maze{
   All visited spots that were not part of the solution are changed to '.'
   All visited spots that are part of the solution are changed to '@'
   */
+
   private int solve(int row, int col){ //you can add more parameters since this is private
     //automatic animation! You are welcome.
     if(animate){
@@ -119,18 +122,19 @@ public class Maze{
     if (maze[row][col] == 'E'){
       return count;
     }else{
-      if (maze[row][col] != ' '){
+      if (maze[row][col] != ' ' || maze[row][col] == 'S'){
         return -1;
       }else{
         maze[row][col] = '@';
         count++;
         if (solve(row, col + 1) == -1
-            && solve(row, col - 1) == -1
-            && solve(row + 1, col) == -1
-            && solve(row - 1, col) == -1){
-              maze[row][col] = '.';
-              count--;
-            }return count;
+        && solve(row, col - 1) == -1
+        && solve(row + 1, col) == -1
+        && solve(row - 1, col) == -1){
+            maze[row][col] = '.';
+            count--;
+            return -1;
+        }return count;
       }
     }
   }
