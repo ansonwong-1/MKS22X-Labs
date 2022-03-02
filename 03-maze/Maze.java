@@ -110,22 +110,19 @@ public class Maze{
   */
   private int solve(int row, int col){ //you can add more parameters since this is private
     //automatic animation! You are welcome.
-    boolean endFound = false;
-    int endRow, endCol;
-    while(!endFound){
-      for(int i = 0; i < maze.length; i++){
-        for (int j = 0; j < maze[i].length; j++){
-          if(maze[i][j] == 'E'){
-            endRow = i;
-            endCol = j;
-            endFound = true;
-          }
-        }
+    int count = 0;
+    if (maze[row][col] == 'E'){
+      return count;
+    }else{
+      if (maze[row][col] != ' '){
+        return -1;
+      }else{
+        maze[row][col] = '@';
+        count++;
+        int[][] directions = new int[][]{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+        //loop through if they're all -1 maze[row][col] = '.' count -- if not return count
       }
     }
-
-    int count = 0;
-
     /*
     while there are empty spaces
     check in four directions {{0, 1}, {0, -1}, {1, 0}, {-1, 0}} for an empty space
@@ -138,7 +135,9 @@ public class Maze{
       System.out.println(this);
       wait(50);
     }
+
     //COMPLETE SOLVE
     return -1; //so it compiles
   }
+
 }
