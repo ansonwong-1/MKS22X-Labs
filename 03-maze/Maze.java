@@ -35,8 +35,8 @@ public class Maze{
       animate = false;
       boolean startFound = false;
       boolean endFound = false;
-      for (int i = 0; i < maze.length || (!startFound && !endFound); i++){
-        for (int j = 0 ; j < maze[i].length || (!startFound && !endFound); j++){
+      for (int i = 0; i < maze.length && (!startFound && !endFound); i++){
+        for (int j = 0 ; j < maze[i].length && (!startFound && !endFound); j++){
           if (maze[i][j] == 'S'){
             startRow = i;
             startCol = j;
@@ -124,8 +124,6 @@ public class Maze{
       }else{
         maze[row][col] = '@';
         count++;
-        // int[][] directions = new int[][]{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
-        //loop through if they're all -1 maze[row][col] = '.' count -- if not return count
         if (solve(row, col + 1) == -1
             && solve(row, col - 1) == -1
             && solve(row + 1, col) == -1
@@ -135,8 +133,6 @@ public class Maze{
             }return count;
       }
     }
-    //COMPLETE SOLVE
-    return -1; //so it compiles
   }
 
 }
