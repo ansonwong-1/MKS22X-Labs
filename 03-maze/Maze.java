@@ -93,7 +93,7 @@ public class Maze{
       clearTerminal();
     }
     //start solving at the location of the s.
-    return solve(startRow,startCol);
+    return solve(startRow,startCol, 0);
   }
 
   /*
@@ -111,32 +111,30 @@ public class Maze{
   All visited spots that are part of the solution are changed to '@'
   */
 
-  private int solve(int row, int col){ //you can add more parameters since this is private
+  private int solve(int row, int col, int count){ //you can add more parameters since this is private
     //automatic animation! You are welcome.
     if(animate){
       gotoTop();
       System.out.println(this);
       wait(50);
     }
-    int count = 0;
+    int count1;
     if (maze[row][col] == 'E'){
       return count;
-    }else{
-      if (maze[row][col] != ' ' || maze[row][col] == 'S'){
+    }else if (maze[row][col] != ' ' && maze[row][col] != 'S'){
         return -1;
-      }else{
-        maze[row][col] = '@';
-        count++;
-        if (solve(row, col + 1) == -1
-        && solve(row, col - 1) == -1
-        && solve(row + 1, col) == -1
-        && solve(row - 1, col) == -1){
-            maze[row][col] = '.';
-            count--;
-            return -1;
-        }return count;
-      }
     }
-  }
+        int[][] directions = new int[][]{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+        for(int i = 0; i < directions.length; i++){
+          maze[row][col] = '@';
+          count1 = solve(row + directions[i][0], col + directions[i][1], count + 1);
+          if(count1 > - 1){
+            return count1;
+          }else{
+            maze[row][col] = '.';
+          }
+        }return -1;
+      }
+
 
 }
