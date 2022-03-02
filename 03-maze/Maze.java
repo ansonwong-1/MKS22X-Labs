@@ -110,6 +110,11 @@ public class Maze{
   */
   private int solve(int row, int col){ //you can add more parameters since this is private
     //automatic animation! You are welcome.
+    if(animate){
+      gotoTop();
+      System.out.println(this);
+      wait(50);
+    }
     int count = 0;
     if (maze[row][col] == 'E'){
       return count;
@@ -130,19 +135,6 @@ public class Maze{
             }return count;
       }
     }
-    /*
-    while there are empty spaces
-    check in four directions {{0, 1}, {0, -1}, {1, 0}, {-1, 0}} for an empty space
-    if E is in one of the spaces-> return the number of squares with @
-    if one is found-> go there
-    if dead end-> backtrack and put periods
-    */
-    if(animate){
-      gotoTop();
-      System.out.println(this);
-      wait(50);
-    }
-
     //COMPLETE SOLVE
     return -1; //so it compiles
   }
