@@ -119,8 +119,15 @@ public class Maze{
       }else{
         maze[row][col] = '@';
         count++;
-        int[][] directions = new int[][]{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+        // int[][] directions = new int[][]{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
         //loop through if they're all -1 maze[row][col] = '.' count -- if not return count
+        if (solve(row, col + 1) == -1
+            && solve(row, col - 1) == -1
+            && solve(row + 1, col) == -1
+            && solve(row - 1, col) == -1){
+              maze[row][col] = '.';
+              count--;
+            }return count;
       }
     }
     /*
