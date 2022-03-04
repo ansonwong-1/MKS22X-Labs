@@ -15,7 +15,12 @@
               }
             }
             MazeGenerator.generate(maze,startrow,startcol);
-            System.out.println(maze);
+            String ans = "";
+            for (int i = 0; i < maze.length; i++){
+              for(int j = 0; j < maze[i].length; j++){
+                ans += maze[i][j];
+              }ans += '\n';
+            }System.out.println(ans);
             System.out.println("MAZE!");//You need a way to show the maze without the array brackets etc.
           }else if(args.length == 1  || args.length == 2){
               try{
