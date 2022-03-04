@@ -11,6 +11,46 @@ public class MazeGenerator{
     int[][] directions = new int[][]{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
     Random rng = new Random();
     int[] direction = directions[rng.nextInt(4)];
+    boolean safeToCarve = false;
+    for (int i = 0 ; i < directions.length; i++){
+      int r = startrow + directions[i][0];
+      int c = startcol + directions[i][1];
+      if (r > 0 && c > 0 && r < maze.length - 1 && c < maze[r].length - 1)
+      {int neighbors = 0;
+      if(maze[startrow][startcol] == '#'){
+        for(int j = 0; j < directions.length; j++){
+          int rj = startrow + directions[j][0];
+          int cj = startcol + directions[j][1];
+          if (rj > 0 && cj > 0 && rj < maze.length - 1 && cj < maze[r].length - 1){
+            if (maze[r][c] == ' '){
+              neighbors++;
+            }
+          }
+        }if (neighbors < 2){
+          safeToCarve = true;
+        }
+      }if (safeToCarve){
+        maze[startrow + direction[0]][startcol + direction[1]] = ' ';
+      }}
+    }
+    // int count1;
+    // if (maze[row][col] == 'E'){
+    //   return count;
+    // }else if (maze[row][col] != ' ' && maze[row][col] != 'S'){
+    //     return -1;
+    // }
+    //     int[][] directions = new int[][]{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+    //     for(int i = 0; i < directions.length; i++){
+    //       maze[row][col] = '@';
+    //       count1 = solve(row + directions[i][0], col + directions[i][1], count + 1);
+    //       if(count1 > - 1){
+    //         return count1;
+    //       }else{
+    //         maze[row][col] = '.';
+    //       }
+    //     }return -1;
+    //   }
+    // generate(maze, startrow + direction[0], startcol + direction[1]);
     // boolean safeToCarve = fewer than two open neighbors
   }
 
