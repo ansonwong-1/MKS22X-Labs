@@ -1,5 +1,6 @@
 
   import java.io.*;
+  import java.util.*;
   public class KDriver{
       public static void main(String[]args){
           if(args.length == 4){
@@ -8,9 +9,13 @@
             int startrow = Integer.parseInt(args[2]);
             int startcol = Integer.parseInt(args[3]);
             char[][]maze = new char[rows][cols];
-            //you must fill maze with '#'
+            for (int i = 0; i < rows; i++){
+              for(int j = 0; j < cols; j++){
+                maze[i][j] = '#';
+              }
+            }
             MazeGenerator.generate(maze,startrow,startcol);
-            //Print the maze here.
+            System.out.println(maze);
             System.out.println("MAZE!");//You need a way to show the maze without the array brackets etc.
           }else if(args.length == 1  || args.length == 2){
               try{
