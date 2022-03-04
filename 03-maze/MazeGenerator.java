@@ -7,13 +7,29 @@ public class MazeGenerator{
 // The dimensions of the maze array will be greater than 3x3, e.g. 3x4 or 4x3 would be the smallest valid array.
 // The maze array is pre-populated completely with '#'
 // The startrow and startcol will be a valid index and will not in the first or last row/col
+
+/*
+public static void generate(char[][]maze, int startrow, int startcol){
+  int[][] directions = new int[][]{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+  Random rng = new Random();
+  boolean safeToCarve = true;
+  if (safeToCarve){
+    maze[startrow][startcol] = ' ';
+    for(int i = 0; i < 4; i++){
+      int[] direction = directions[rng.nextInt(4)];
+      generate(maze, startrow + direction[0], startcol + direction[1]);
+    }
+  }
+}
+*/
+
   public static void generate(char[][]maze, int startrow, int startcol){
     int[][] directions = new int[][]{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
     Random rng = new Random();
     // int[] direction = directions[rng.nextInt(4)];
     boolean safeToCarve = true;
-    if (startrow > maze.length - 1 || startrow <= 0
-    || startcol > maze.length - 1 || startcol <= 0){
+    if (startrow >= maze.length - 1 || startrow <= 0
+    || startcol >= maze.length - 1 || startcol <= 0){
       safeToCarve = false;
     }else if (maze[startrow][startcol] == ' '){
       safeToCarve = false;
@@ -32,13 +48,14 @@ public class MazeGenerator{
       }
     }
     if (safeToCarve){
-      for (int i = 0; i < directions.length; i++){
-        maze[startrow][startcol] = ' ';
+      maze[startrow][startcol] = ' ';
+      for(int i = 0; i < 4; i++){
         int[] direction = directions[rng.nextInt(4)];
         generate(maze, startrow + direction[0], startcol + direction[1]);
       }
     }
   }
+
 // Postconditions:
 // The array '#' will be carved into ' ' forming a maze
 // The array[startrow][startcol] is replaced with an 'S',
