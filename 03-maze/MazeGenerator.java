@@ -50,19 +50,20 @@ public class MazeGenerator{
     }
   }
   public static void generateHelper(char[][]maze, int startrow, int startcol){
-      ArrayList<int[]> direction = new ArrayList<int[]>();
-      direction.add(new int[]{0, 1});
-      direction.add(new int[]{0, -1});
-      direction.add(new int[]{1, 0});
-      direction.add(new int[]{-1, 0});
-      Collections.shuffle(direction);
-      for(int i = 0; i < direction.size(); i++){
-        if(openNeighbors(maze, startrow + direction.get(i)[0], startcol + direction.get(i)[1])){
-            maze[startrow + direction.get(i)[0]][startcol + direction.get(i)[1]] = ' ';
-            gotoTop();
-            System.out.println(toString(maze));
-            wait(50);
-            generateHelper(maze, startrow + direction.get(i)[0], startcol + direction.get(i)[1]);
+      ArrayList<int[]> directions = new ArrayList<int[]>();
+      if(openNeighbors(maze, startrow, startcol)){
+        maze[startrow][startcol] = ' ';
+        gotoTop();
+        System.out.println(toString(maze));
+        wait(50);
+        directions.add(new int[]{0, 1});
+        directions.add(new int[]{0, -1});
+        directions.add(new int[]{1, 0});
+        directions.add(new int[]{-1, 0});
+        while(directions.size() > 0){
+          Collections.shuffle(directions);
+          int[] direction = directions.remove(directions.size() - 1);
+          generateHelper(maze, startrow + direction[0], startcol + direction[1]);
         }
       }
     }
