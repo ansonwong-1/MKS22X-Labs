@@ -10,14 +10,14 @@ public class MazeGenerator{
 
 
   public static void generate(char[][]maze, int startrow, int startcol){
-    clearTerminal();
+    // clearTerminal();
     generateHelper(maze, startrow, startcol);
     addSE(maze, startrow, startcol);
   }
-  public static void clearTerminal(){
-     //erase terminal
-     System.out.println("\033[2J");
-   }
+  // public static void clearTerminal(){
+  //    //erase terminal
+  //    System.out.println("\033[2J");
+  //  }
   public static void addSE(char[][]maze, int startrow, int startcol){
     maze[startrow][startcol] = 'S';
     Random rr = new Random();
@@ -38,24 +38,24 @@ public class MazeGenerator{
       }ans += '\n';
     }return ans;
   }
-  public static void gotoTop(){
-    //go to top left of screen
-    System.out.println("\033[1;1H");
-  }
-  private static void wait(int millis){
-    try {
-      Thread.sleep(millis);
-    }
-    catch (InterruptedException e) {
-    }
-  }
+  // public static void gotoTop(){
+  //   //go to top left of screen
+  //   System.out.println("\033[1;1H");
+  // }
+  // private static void wait(int millis){
+  //   try {
+  //     Thread.sleep(millis);
+  //   }
+  //   catch (InterruptedException e) {
+  //   }
+  // }
   public static void generateHelper(char[][]maze, int startrow, int startcol){
       ArrayList<int[]> directions = new ArrayList<int[]>();
       if(openNeighbors(maze, startrow, startcol)){
         maze[startrow][startcol] = ' ';
-        gotoTop();
-        System.out.println(toString(maze));
-        wait(50);
+        // gotoTop();
+        // System.out.println(toString(maze));
+        // wait(50);
         directions.add(new int[]{0, 1});
         directions.add(new int[]{0, -1});
         directions.add(new int[]{1, 0});
@@ -86,8 +86,4 @@ public class MazeGenerator{
       }
       return neighbors < 2;
     }
-
-
-
-
 }
