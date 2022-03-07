@@ -12,7 +12,7 @@ public class MazeGenerator{
   public static void generate(char[][]maze, int startrow, int startcol){
     clearTerminal();
     generateHelper(maze, startrow, startcol);
-    addSE(maze, startrow - 1, startcol - 1);
+    addSE(maze, startrow, startcol);
   }
   public static void clearTerminal(){
      //erase terminal
