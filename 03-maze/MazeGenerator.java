@@ -31,7 +31,7 @@ public static void generate(char[][]maze, int startrow, int startcol){
     if (startrow >= maze.length - 1 || startrow <= 0
     || startcol >= maze.length - 1 || startcol <= 0){
       safeToCarve = false;
-    }else if (maze[startrow][startcol] == ' '){
+    }else if (maze[startrow][startcol] != '#'){
       safeToCarve = false;
     }else{
       int neighbors = 0;
@@ -43,7 +43,7 @@ public static void generate(char[][]maze, int startrow, int startcol){
             neighbors++;
           }
         }
-      }if (neighbors > 2){
+      }if (neighbors >= 2){
         safeToCarve = false;
       }
     }
@@ -55,9 +55,5 @@ public static void generate(char[][]maze, int startrow, int startcol){
       }
     }
   }
-
-// Postconditions:
-// The array '#' will be carved into ' ' forming a maze
-// The array[startrow][startcol] is replaced with an 'S',
-// The array has an 'E' placed in one of the carved out spots, preferably not too adjacent to the 'S'
+  
 }
