@@ -10,21 +10,25 @@ public class MazeGenerator{
 
 
   public static void generate(char[][]maze, int startrow, int startcol){
+    clearTerminal();
     generateHelper(maze, startrow, startcol);
-    // maze[startrow][startcol] = 'S';
+    addSE(maze, startrow - 1, startcol - 1);
   }
-
+  public static void clearTerminal(){
+     //erase terminal
+     System.out.println("\033[2J");
+   }
   public static void addSE(char[][]maze, int startrow, int startcol){
     maze[startrow][startcol] = 'S';
-    // Random rr = new Random();
-    // Random cr = new Random();
-    // int r = rr.nextInt(maze.length - 2) + 1;
-    // int c = cr.nextInt(maze[r].length - 2) + 1;
-    // while (maze[r][c] != ' '){
-    //   r = rr.nextInt(maze.length);
-    //   c = cr.nextInt(maze[r].length);
-    // }
-    // maze[r][c] = 'E';
+    Random rr = new Random();
+    Random cr = new Random();
+    int r = rr.nextInt(maze.length - 2) + 1;
+    int c = cr.nextInt(maze[r].length - 2) + 1;
+    while (maze[r][c] != ' '){
+      r = rr.nextInt(maze.length);
+      c = cr.nextInt(maze[r].length);
+    }
+    maze[r][c] = 'E';
   }
   public static String toString(char[][] maze){
     String ans = "";
