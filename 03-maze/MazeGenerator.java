@@ -8,22 +8,26 @@ public class MazeGenerator{
 // The maze array is pre-populated completely with '#'
 // The startrow and startcol will be a valid index and will not in the first or last row/col
 
-/*
-public static void generate(char[][]maze, int startrow, int startcol){
-  int[][] directions = new int[][]{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
-  Random rng = new Random();
-  boolean safeToCarve = true;
-  if (safeToCarve){
-    maze[startrow][startcol] = ' ';
-    for(int i = 0; i < 4; i++){
-      int[] direction = directions[rng.nextInt(4)];
-      generate(maze, startrow + direction[0], startcol + direction[1]);
-    }
-  }
-}
-*/
 
   public static void generate(char[][]maze, int startrow, int startcol){
+    generateHelper(maze, startrow, startcol);
+    // addSE(maze, startrow, startcol);
+  }
+
+  public static void addSE(char[][]maze, int startrow, int startcol){
+    maze[startrow][startcol] = 'S';
+    Random rr = new Random();
+    Random cr = new Random();
+    int r = rr.nextInt(maze.length - 2) + 1;
+    int c = cr.nextInt(maze[r].length - 2) + 1;
+    while (maze[r][c] != ' '){
+      r = rr.nextInt(maze.length);
+      c = cr.nextInt(maze[r].length);
+    }
+    maze[r][c] = 'E';
+  }
+
+  public static void generateHelper(char[][]maze, int startrow, int startcol){
     int[][] directions = new int[][]{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
     Random rng = new Random();
     // int[] direction = directions[rng.nextInt(4)];
@@ -55,5 +59,5 @@ public static void generate(char[][]maze, int startrow, int startcol){
       }
     }
   }
-  
+
 }
