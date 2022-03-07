@@ -11,53 +11,78 @@ public class MazeGenerator{
 
   public static void generate(char[][]maze, int startrow, int startcol){
     generateHelper(maze, startrow, startcol);
-    // addSE(maze, startrow, startcol);
+    // maze[startrow][startcol] = 'S';
   }
 
   public static void addSE(char[][]maze, int startrow, int startcol){
     maze[startrow][startcol] = 'S';
-    Random rr = new Random();
-    Random cr = new Random();
-    int r = rr.nextInt(maze.length - 2) + 1;
-    int c = cr.nextInt(maze[r].length - 2) + 1;
-    while (maze[r][c] != ' '){
-      r = rr.nextInt(maze.length);
-      c = cr.nextInt(maze[r].length);
-    }
-    maze[r][c] = 'E';
+    // Random rr = new Random();
+    // Random cr = new Random();
+    // int r = rr.nextInt(maze.length - 2) + 1;
+    // int c = cr.nextInt(maze[r].length - 2) + 1;
+    // while (maze[r][c] != ' '){
+    //   r = rr.nextInt(maze.length);
+    //   c = cr.nextInt(maze[r].length);
+    // }
+    // maze[r][c] = 'E';
   }
-
+  public static String toString(char[][] maze){
+    String ans = "";
+    for (int i = 0; i < maze.length; i++){
+      for(int j = 0; j < maze[i].length; j++){
+        ans += maze[i][j];
+      }ans += '\n';
+    }return ans;
+  }
+  public static void gotoTop(){
+    //go to top left of screen
+    System.out.println("\033[1;1H");
+  }
+  private static void wait(int millis){
+    try {
+      Thread.sleep(millis);
+    }
+    catch (InterruptedException e) {
+    }
+  }
   public static void generateHelper(char[][]maze, int startrow, int startcol){
-    int[][] directions = new int[][]{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
-    Random rng = new Random();
-    // int[] direction = directions[rng.nextInt(4)];
-    boolean safeToCarve = true;
-    if (startrow >= maze.length - 1 || startrow <= 0
-    || startcol >= maze.length - 1 || startcol <= 0){
-      safeToCarve = false;
-    }else if (maze[startrow][startcol] != '#'){
-      safeToCarve = false;
-    }else{
+      ArrayList<int[]> direction = new ArrayList<int[]>();
+      direction.add(new int[]{0, 1});
+      direction.add(new int[]{0, -1});
+      direction.add(new int[]{1, 0});
+      direction.add(new int[]{-1, 0});
+      Collections.shuffle(direction);
+      for(int i = 0; i < direction.size(); i++){
+        if(openNeighbors(maze, startrow + direction.get(i)[0], startcol + direction.get(i)[1])){
+            maze[startrow + direction.get(i)[0]][startcol + direction.get(i)[1]] = ' ';
+            gotoTop();
+            System.out.println(toString(maze));
+            wait(50);
+            generateHelper(maze, startrow + direction.get(i)[0], startcol + direction.get(i)[1]);
+        }
+      }
+    }
+
+    public static boolean openNeighbors(char[][]maze, int ro, int co){
       int neighbors = 0;
-      for(int j = 0; j < directions.length; j++){
-        int r = startrow + directions[j][0];
-        int c = startcol + directions[j][1];
+      //out of bounds check
+      if (ro <= 0 || co <= 0 || ro >= maze.length - 1 || co >= maze[ro].length - 1 || maze[ro][co] != '#'){
+        return false;
+      }
+      int[][] directions = new int[][]{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+      for (int i = 0; i < 4; i++){
+        int r = ro + directions[i][0];
+        int c = co + directions[i][1];
         if (r > 0 && c > 0 && r < maze.length - 1 && c < maze[r].length - 1){
-          if (maze[r][c] == ' '){
+          if(maze[r][c] == ' '){
             neighbors++;
           }
         }
-      }if (neighbors >= 2){
-        safeToCarve = false;
       }
+      return neighbors < 2;
     }
-    if (safeToCarve){
-      maze[startrow][startcol] = ' ';
-      for(int i = 0; i < 4; i++){
-        int[] direction = directions[rng.nextInt(4)];
-        generate(maze, startrow + direction[0], startcol + direction[1]);
-      }
-    }
-  }
+
+
+
 
 }
