@@ -17,5 +17,23 @@ public class Bronze{
     }return vol;
   }
 
+  public static void stomp(int[][] pasture, int R_s, int C_s, int D_s){
+    int greatest = pasture[R_s][C_s];
+    for (int i = 0; i < 3; i++){
+      for(int j = 0; j < 3; j++){
+        if (pasture[R_s + i][C_s + j] > greatest){
+          greatest = pasture[R_s + i][C_s + j];
+        }
+      }
+    }
+    int f = greatest - D_s;
+    for (int i = 0; i < 3; i++){
+      for(int j = 0; j < 3; j++){
+        if (pasture[R_s + i][C_s + j] > f){
+          pasture[R_s + i][C_s + j] = f;
+        }
+      }
+    }
+  }
 
 }
