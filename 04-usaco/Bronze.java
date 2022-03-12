@@ -7,15 +7,18 @@ public class Bronze{
       File file = new File(filename);
       Scanner in = new Scanner(file);
       int[][] pasture = new int[in.nextInt()][in.nextInt()];
+      int te = in.nextInt();
+      int ins = in.nextInt();
       for (int i = 0; i < pasture.length; i++){
         for (int j = 0; j < pasture[i].length; j++){
-
+          pasture[i][j] = in.nextInt();
         }
       }
     }catch (FileNotFoundException e){
       return -1;
     }return vol;
   }
+
 
   public static void stomp(int[][] pasture, int R_s, int C_s, int D_s){
     int greatest = pasture[R_s][C_s];
