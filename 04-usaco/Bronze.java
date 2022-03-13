@@ -9,27 +9,27 @@ public class Bronze{
       int r = in.nextInt();
       int c = in.nextInt();
       int[][] pasture = new int[r][c];
-      int te = in.nextInt();
-      int ins = in.nextInt();
+      int e = in.nextInt();
+      int n = in.nextInt();
       int d = 0;
       for (int i = 0; i < pasture.length; i++){
         for (int j = 0; j < pasture[i].length; j++){
           pasture[i][j] = in.nextInt();
         }
       }
-      for(int i = 0; i < ins; i++){
+      for(int i = 0; i < n; i++){
         stomp(pasture, in.nextInt(), in.nextInt(), in.nextInt());
       }
       for(int i = 0; i < r; i++){
           for(int j = 0; j < c; j++){
-              if(te > pasture[i][j]){
-                d += te - pasture[r][c];
+              if(e > pasture[i][j]){
+                d += e - pasture[r][c];
               }
           }
-      }
+      }return d * 72 * 72;
     }catch (FileNotFoundException e){
       return -1;
-    }return d * 6 * 12 * 6 * 12;
+    }
   }
 
 
