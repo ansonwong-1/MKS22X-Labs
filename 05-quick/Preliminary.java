@@ -1,3 +1,5 @@
+import java.util.*;
+import java.io.*;
 public class Preliminary{
   public static void main (String[] args){
     int[] arr = {999,999,999,4,3,2,1,0,999,999,999};
@@ -13,6 +15,20 @@ public class Preliminary{
   *@return the index of the final position of the pivot element.
   */
   public static int partition (int [] data, int start, int end){
-
+    int pivot = (int)(Math.random() * (end - start + 1) + start);
+    // really big comment to remind you that this is 2-3 times slower than it should be.
+    int[] temp = new int[end - start];
+    int less = 0;
+    int greater = temp.length - 1;
+    for (int i = start; i < end; i++){
+      if (data[pivot] > data[i]){
+        temp[less] = data[i];
+        less++;
+      }
+      else if (data[pivot] < data[i]){
+        temp[greater] = data[i];
+      }
+    }return less + 1;
   }
+
 }
