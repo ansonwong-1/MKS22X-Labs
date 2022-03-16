@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 public class Quick{
   public static void main (String[] args){
-    int[] data = {4, 3, 2, 14, 42, 8, 1, 9};
+    int[] data = {4, 3, 2, 14, 42, 8, 1, 9, 1, 1, 1, 1, 1, 1};
     System.out.println("Original: " + Arrays.toString(data));
     int pivot = partition( data , 0, data.length);
     System.out.println("Pivot value: "+ data[pivot]+ ", Pivot index: "+pivot);
@@ -29,11 +29,17 @@ public class Quick{
     int pivotVal = data[pivot];
     swap(data, pivot, start);
     int less = start + 1;
+    int dupeBefore = 1;
     for (int i = start; i < end; i++){
       if(pivotVal > data[i]){
         swap(data, i, less);
       //  System.out.println(Arrays.toString(data));
         less++;
+      }else if (pivotVal == data[i]){
+        if(dupeBefore % 2 == 0){
+          swap(data, i, less);
+          less++;
+        }dupeBefore++;
       }
     }swap(data, less - 1, start);
     //System.out.println(Arrays.toString(data));
