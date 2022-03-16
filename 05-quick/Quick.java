@@ -9,16 +9,7 @@ public class Quick{
     System.out.println("Modified: "+Arrays.toString(data));
     System.out.println();
   }
-  /*Modify the array such that:
-  *1. A random index from start to end inclusive is chosen, the
-  * corresponding element is designated the pivot element.
-  *2. all elements in range that are smaller than the pivot element
-  * are placed before the pivot element.
-  *3. all elements in range that are larger than the pivot element are
-  *placed after the pivot element.
-  *4. Only the indices from start to end inclusive are considered in range
-  *@return the index of the final position of the pivot element.
-  */
+
   public static void swap (int[] arr, int swap, int swap1){
     int temp = arr[swap];
     arr[swap] = arr[swap1];
@@ -33,7 +24,6 @@ public class Quick{
     for (int i = start; i < end; i++){
       if(pivotVal > data[i]){
         swap(data, i, less);
-      //  System.out.println(Arrays.toString(data));
         less++;
       }else if (pivotVal == data[i]){
         if(dupeBefore % 2 == 0){
@@ -42,8 +32,6 @@ public class Quick{
         }dupeBefore++;
       }
     }swap(data, less - 1, start);
-    //System.out.println(Arrays.toString(data));
-    System.out.println(pivot + " " + pivotVal);
     return less - 1;
   }
 
