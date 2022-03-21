@@ -10,6 +10,22 @@ public class Quick{
     System.out.println();
   }
 
+  public static int quickselect(int[] data, int k){
+    int s = 0;
+    int e  = data.length - 1;
+    int r = partition(data, s, e);
+    while(r != k){
+      if(r < k){
+        s = r;
+        r = partition(data, s + 1, e);
+      }
+      else if(r > k){
+        e = r;
+        r = partition(data, s, e - 1);
+      }
+    }return data[r];
+  }
+
   public static void swap (int[] arr, int swap, int swap1){
     int temp = arr[swap];
     arr[swap] = arr[swap1];
