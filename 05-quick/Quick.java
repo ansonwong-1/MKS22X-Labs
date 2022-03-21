@@ -28,17 +28,19 @@ public class Quick{
   public static int quickselect(int[] data, int k){
     int s = 0;
     int e  = data.length - 1;
-    int r = partition(data, s, e);
-    while(r != k){
-      if(r < k){
-        s = r;
-        r = partition(data, s + 1, e);
+    //int r = partition(data, s, e);
+    while(s <= e){
+      int r = partition(data, s, e);
+      if(k == r){
+        return data[r];
       }
-      else if(r > k){
-        e = r;
-        r = partition(data, s, e - 1);
+      else if(r < k){
+        s = r + 1;
       }
-    }return data[r];
+      else{
+        e = r - 1;
+      }
+    }return -1;
   }
 
   public static void swap (int[] arr, int swap, int swap1){
