@@ -8,6 +8,10 @@ public class Quick{
     //System.out.println("Pivot value: "+ data[pivot]+ ", Pivot index: "+pivot);
     System.out.println("Modified: "+Arrays.toString(data));
     System.out.println();
+    int[] data1 = {0, 1,2,4,5,6,9,100};
+    System.out.println("og" + Arrays.toString(data1));
+    System.out.println(quickselect(data, 3));
+    System.out.println(Arrays.toString(data1));
   }
   public static void quicksort(int[]data){
     quicksort(data,0,data.length-1);
@@ -16,8 +20,8 @@ public class Quick{
   public static void quicksort(int[]data,int lo,int hi){
     if (lo < hi){
       int p = partition(data, lo, hi);
-      quicksort(data, lo, p - 1);
       quicksort(data, p + 1, hi);
+      quicksort(data, lo, p - 1);
     }
   }
 
@@ -44,22 +48,21 @@ public class Quick{
   }
   public static int partition (int [] data, int start, int end){
     int pivot = (int)(Math.random() * (end - start + 1) + start);
-    int pivotVal = data[pivot];
-    swap(data, pivot, start);
-    int less = start + 1;
+    swap(data, pivot, end);
+    pivot = end;
+    int less = start - 1;
     int dupeBefore = 1;
     for (int i = start; i < end; i++){
-      if(pivotVal > data[i]){
-        swap(data, i, less);
+      if(data[pivot] > data[i]){
         less++;
-      }else if (pivotVal == data[i]){
+        swap(data, i, less);
+      }else if (data[pivot] == data[i]){
         if(dupeBefore % 2 == 0){
-          swap(data, i, less);
           less++;
+          swap(data, i, less);
         }dupeBefore++;
       }
-    }swap(data, less - 1, start);
-    return less - 1;
+    }swap(data, less + 1, start);
+    return less + 1;
   }
-
 }
