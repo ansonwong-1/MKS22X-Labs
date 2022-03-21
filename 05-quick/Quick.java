@@ -4,10 +4,21 @@ public class Quick{
   public static void main (String[] args){
     int[] data = {4, 3, 2, 14, 42, 8, 1, 9, 1, 1, 1, 1, 1, 1};
     System.out.println("Original: " + Arrays.toString(data));
-    int pivot = partition( data , 0, data.length);
-    System.out.println("Pivot value: "+ data[pivot]+ ", Pivot index: "+pivot);
+    quicksort(data);
+    //System.out.println("Pivot value: "+ data[pivot]+ ", Pivot index: "+pivot);
     System.out.println("Modified: "+Arrays.toString(data));
     System.out.println();
+  }
+  public static void quicksort(int[]data){
+    quicksort(data,0,data.length-1);
+  }
+
+  public static void quicksort(int[]data,int lo,int hi){
+    if (lo < hi){
+      int p = partition(data, lo, hi);
+      quicksort(data, lo, p - 1);
+      quicksort(data, p + 1, hi);
+    }
   }
 
   public static int quickselect(int[] data, int k){

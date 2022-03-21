@@ -1,5 +1,5 @@
 import java.util.Arrays;
-public class SelDriver {
+public class Tester {
   public static void main(String[] args) {
     System.out.println("This should take around 20-30 seconds. Not longer.\n");
     test_all();
@@ -21,9 +21,11 @@ public class SelDriver {
     print("Reverse", testRev());
     print("Tiny Random", testRandom_1());
     print("Big Random", testRandom_0());
-    print("Sorted", testSorted());
     print("Equal", testEqual());
-
+    long start = System.currentTimeMillis();
+    print("Sorted", testSorted());
+    long end = System.currentTimeMillis();
+    if (end - start >= 5000) System.out.println("your sort works on sorted arrays but takes way too long, u didn't the dutch partition thing or ur computer is ass\n");
   }
   public static void print(String type, boolean pass) {
     if (pass) {
@@ -37,9 +39,9 @@ public class SelDriver {
     for (int i = 0; i < 10; i++) {
       int[] arr_0 = makeNeg();
       int[] arr_1 = arr_0.clone();
-      int num = (int) (Math.random() * arr_0.length);
-      Arrays.sort(arr_0);
-      if (arr_0[num] != Quick.quickselect(arr_1, num)) return false;
+      Quick.quicksort(arr_0);
+      Arrays.sort(arr_1);
+      if (!(Arrays.toString(arr_0).equals(Arrays.toString(arr_1)))) return false;
     }
     return good;
   }
@@ -48,9 +50,9 @@ public class SelDriver {
     for (int i = 0; i < 10; i++) {
       int[] arr_0 = makeSorted();
       int[] arr_1 = arr_0.clone();
-      int num = (int) (Math.random() * arr_0.length);
-      Arrays.sort(arr_0);
-      if (arr_0[num] != Quick.quickselect(arr_1, num)) return false;
+      Quick.quicksort(arr_0);
+      Arrays.sort(arr_1);
+      if (!(Arrays.toString(arr_0).equals(Arrays.toString(arr_1)))) return false;
     }
     return good;
   }
@@ -59,9 +61,9 @@ public class SelDriver {
     for (int i = 0; i < 10; i++) {
       int[] arr_0 = makeRev();
       int[] arr_1 = arr_0.clone();
-      int num = (int) (Math.random() * arr_0.length);
-      Arrays.sort(arr_0);
-      if (arr_0[num] != Quick.quickselect(arr_1, num)) return false;
+      Quick.quicksort(arr_0);
+      Arrays.sort(arr_1);
+      if (!(Arrays.toString(arr_0).equals(Arrays.toString(arr_1)))) return false;
     }
     return good;
   }
@@ -70,9 +72,9 @@ public class SelDriver {
     for (int i = 0; i < 10; i++) {
       int[] arr_0 = makeRandom_0();
       int[] arr_1 = arr_0.clone();
-      int num = (int) (Math.random() * arr_0.length);
-      Arrays.sort(arr_0);
-      if (arr_0[num] != Quick.quickselect(arr_1, num)) return false;
+      Quick.quicksort(arr_0);
+      Arrays.sort(arr_1);
+      if (!(Arrays.toString(arr_0).equals(Arrays.toString(arr_1)))) return false;
     }
     return good;
   }
@@ -81,9 +83,9 @@ public class SelDriver {
     for (int i = 0; i < 10; i++) {
       int[] arr_0 = makeRandom_1();
       int[] arr_1 = arr_0.clone();
-      int num = (int) (Math.random() * arr_0.length);
-      Arrays.sort(arr_0);
-      if (arr_0[num] != Quick.quickselect(arr_1, num)) return false;
+      Quick.quicksort(arr_0);
+      Arrays.sort(arr_1);
+      if (!(Arrays.toString(arr_0).equals(Arrays.toString(arr_1)))) return false;
     }
     return good;
   }
@@ -92,9 +94,9 @@ public class SelDriver {
     for (int i = 0; i < 10; i++) {
       int[] arr_0 = makeEqual();
       int[] arr_1 = arr_0.clone();
-      int num = (int) (Math.random() * arr_0.length);
-      Arrays.sort(arr_0);
-      if (arr_0[num] != Quick.quickselect(arr_1, num)) return false;
+      Quick.quicksort(arr_0);
+      Arrays.sort(arr_1);
+      if (!(Arrays.toString(arr_0).equals(Arrays.toString(arr_1)))) return false;
     }
     return good;
   }
