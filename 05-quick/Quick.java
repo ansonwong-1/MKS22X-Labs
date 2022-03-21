@@ -2,16 +2,12 @@ import java.util.*;
 import java.io.*;
 public class Quick{
   public static void main (String[] args){
-    int[] data = {4, 3, 2, 14, 42, 8, 1, 9, 1, 1, 1, 1, 1, 1};
-    System.out.println("Original: " + Arrays.toString(data));
-    quicksort(data);
-    //System.out.println("Pivot value: "+ data[pivot]+ ", Pivot index: "+pivot);
-    System.out.println("Modified: "+Arrays.toString(data));
-    System.out.println();
-    int[] data1 = {0, 1,2,4,5,6,9,100};
-    System.out.println("og" + Arrays.toString(data1));
-    System.out.println(quickselect(data, 3));
-    System.out.println(Arrays.toString(data1));
+    int [] data = new int[] {4,3,2,1,0};
+System.out.println("Original: "+Arrays.toString(data));
+int pivot = partition( data , 0, 4);
+System.out.println("Pivot value: "+data[pivot]+ ", Pivot index: "+pivot);
+System.out.println("Modified: "+Arrays.toString(data));
+System.out.println();
   }
   public static void quicksort(int[]data){
     quicksort(data,0,data.length-1);
@@ -47,6 +43,7 @@ public class Quick{
     int temp = arr[swap];
     arr[swap] = arr[swap1];
     arr[swap1] = temp;
+
   }
   public static int partition (int [] data, int start, int end){
     int pivot = (int)(Math.random() * (end - start + 1) + start);
@@ -55,16 +52,16 @@ public class Quick{
     int less = start - 1;
     int dupeBefore = 1;
     for (int i = start; i < end; i++){
-      if(data[pivot] > data[i]){
-        less++;
-        swap(data, i, less);
-      }else if (data[pivot] == data[i]){
-        if(dupeBefore % 2 == 0){
+      if(data[i] <= data[pivot]){
+        if(data[i] == data[pivot] && dupeBefore % 2 == 0){
+          dupeBefore++;
+        }else{
+          dupeBefore++;
           less++;
-          swap(data, i, less);
-        }dupeBefore++;
+          swap(data, less, i);
+        }
       }
-    }swap(data, less + 1, start);
+    }swap(data, less + 1, pivot);
     return less + 1;
   }
 }
