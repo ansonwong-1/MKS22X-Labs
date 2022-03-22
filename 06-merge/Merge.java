@@ -7,7 +7,11 @@ public class Merge{
     int ll = 0, lr = 0;
     for (int i = 0; i < merged.length; i++){
       if(ll >= left.length){
-        //add all remaining values of right to the end
+        while(i < merged.length){
+          merged[i] = right[ll];
+          ll++;
+          i++;
+        }
       }else if(lr >= right.length){
         while(i < merged.length){
           merged[i] = right[lr];
