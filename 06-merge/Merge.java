@@ -2,11 +2,8 @@ import java.util.*;
 import java.io.*;
 public class Merge{
   public static void main (String[] args){
-    int[] data = {3,51,2,3,1,4,3,6,7};
-    Arrays.sort(data);
-    int[] data1 = {34,-31,-4,-5,-33};
-    Arrays.sort(data1);
-    System.out.println(Arrays.toString(merge(data1, data)));
+    int[] arr = {2,3,4,1,4,2,1,2,4,1,2};
+    System.out.println(Arrays.toString(mergesortH(arr)));
   }
 
   public static int[] merge(int[] left, int[] right){
@@ -30,29 +27,37 @@ public class Merge{
     }return merged;
   }
 
-// public static void mergesort(int[] data){
-//   int [] temp  =  mergesortH(data);
-//   data = Arrays.copyOf(temp, temp.length);
-// }
-// public static int[] mergesortH(int[]data){
-//   if(data.length > 1){
-//     int l = data.length / 2;
-//     int r = data.length - l;
-//     int[] L = new int[l];
-//     int[] R = new int[r];
-//     for(int i = 0; i < data.length; i++){
-//       if (i < l){
-//         L[i] = data[i];
-//       }else{
-//         R[i - l] = data[i];
-//       }
-//     }
-//     mergesort(L);
-//     mergesort(R);
-//     return merge(L, R);
-//   }return data;
-// }
-//
+  public static int[] mergesortH(int [] data){
+      //********************
+      //COMPLETE THIS METHOD
+      //********************
+      //if more than 1 element{
+        //left = copy half of data
+        //right = copy other half of data
+        //sort each half and merge them together
+      //}
+      if(data.length > 1){
+        int l = data.length / 2;
+        int[] L = new int[l];
+        int[] R = new int[data.length - l];
+        for(int i = 0; i < l; i++){
+          L[i] = data[i];
+        }System.out.println(Arrays.toString(L));
+      }return new int[1];
+    }
+
+    /*mergesort uses the recursive mergesortH method to create a sorted
+    *version of the array. It then copies the data back into the original
+    *array. (This is for compatibility with prior sort testers)
+    *@param data the array to be sorted, this will be modified by the method
+    */
+    public static void mergesort(int [] data){
+      int [] temp  =  mergesortH(data);
+      for(int i = 0; i < data.length; i++){
+        data[i] = temp[i];
+      }
+    }
+
 // int[] mergesortH(data){
 //   if more than 1 element{
 //     left = copy half of data
