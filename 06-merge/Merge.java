@@ -13,10 +13,13 @@ public class Merge{
     int[] merged = new int[left.length + right.length];
     int ll = 0, lr = 0;
     for(int i = 0; i < merged.length; i++){
-      if (i < left.length){
+      if (ll < left.length && lr < right.length){
         if (left[ll] < right[lr]){
           merged[i] = left[ll];
           ll++;
+        }else{
+          merged[i] = right[lr];
+          lr++;
         }
       }
     }return merged;
