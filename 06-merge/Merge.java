@@ -21,6 +21,11 @@ public class Merge{
           merged[i] = right[lr];
           lr++;
         }
+      }else if (lr < right.length){
+        merged[i] = right[lr];
+        lr++;
+      }else if (ll < left.length){
+        merged[i] = left[ll];
       }
     }return merged;
   }
