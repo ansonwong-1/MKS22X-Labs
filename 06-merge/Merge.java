@@ -18,11 +18,12 @@ public class Merge{
           merged[i] = right[lr];
           lr++;
         }
-      }else if (lr < right.length){
+      }else if (lr >= right.length){
+        merged[i] = left[ll];
+        ll++;
+      }else if (ll >= left.length){
         merged[i] = right[lr];
         lr++;
-      }else if (ll < left.length){
-        merged[i] = left[ll];
       }
     }return merged;
   }
@@ -45,9 +46,9 @@ public class Merge{
         }
         for(int i = le; i < data.length; i++){
           R[i - le] = data[i];
-        }System.out.println(Arrays.toString(L));
-        System.out.println(Arrays.toString(R));
-      }return new int[1];
+        }
+        return merge(mergesortH(L), mergesortH(R));
+      }return data;
     }
 
     /*mergesort uses the recursive mergesortH method to create a sorted
