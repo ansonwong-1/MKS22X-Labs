@@ -37,12 +37,16 @@ public class Merge{
         //sort each half and merge them together
       //}
       if(data.length > 1){
-        int l = data.length / 2;
-        int[] L = new int[l];
-        int[] R = new int[data.length - l];
-        for(int i = 0; i < l; i++){
+        int le = data.length / 2;
+        int[] L = new int[le];
+        int[] R = new int[data.length - le];
+        for(int i = 0; i < le; i++){
           L[i] = data[i];
+        }
+        for(int i = le; i < data.length; i++){
+          R[i - le] = data[i];
         }System.out.println(Arrays.toString(L));
+        System.out.println(Arrays.toString(R));
       }return new int[1];
     }
 
