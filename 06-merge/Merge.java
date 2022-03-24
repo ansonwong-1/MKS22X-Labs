@@ -1,6 +1,8 @@
+import java.util.*;
+import java.io.*;
 public class Merge{
 
-  public static void mergesort(int[]data){
+  public static int[] mergesortH(int[]data){
     if(data.length > 1){
       int[] L = new int[data.length / 2];
       if(data.length % 2 == 1){
@@ -11,7 +13,9 @@ public class Merge{
           }else{
             R2[i] = data[i];
           }
-        }
+        }mergesort(L);
+        mergesort(R2);
+        return merge(L, R2);
       }else{
         int[] R = new int[data.length / 2];
         for(int i = 0; i < data.length; i++){
@@ -21,8 +25,11 @@ public class Merge{
             R[i] = data[i];
           }
         }
+        mergesort(L);
+        mergesort(R);
+        return merge(L, R);
       }
-    }
+    }return data;
   }
   public static int[] merge(int[] left, int[] right){
     int[] merged = new int[left.length + right.length];
@@ -52,10 +59,10 @@ public class Merge{
     }return merged;
   }
 
-// public static void mergesort(data){
-//   int [] temp  =  mergeSort(data);
-//   data = Arrays.copyOf(temp, temp.length);
-// }
+public static void mergesort(int[] data){
+  int [] temp  =  mergesortH(data);
+  data = Arrays.copyOf(temp, temp.length);
+}
 //
 // int[] mergesortH(data){
 //   if more than 1 element{
