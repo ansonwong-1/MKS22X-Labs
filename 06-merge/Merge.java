@@ -1,6 +1,28 @@
 public class Merge{
-  public static void mergesort(int[]data){
 
+  public static void mergesort(int[]data){
+    if(data.length > 1){
+      int[] L = new int[data.length / 2];
+      if(data.length % 2 == 1){
+        int[] R2 = new int[data.length / 2 + 1];
+        for(int i = 0; i < data.length; i++){
+          if (i < data.length / 2){
+            L[i] = data[i];
+          }else{
+            R2[i] = data[i];
+          }
+        }
+      }else{
+        int[] R = new int[data.length / 2];
+        for(int i = 0; i < data.length; i++){
+          if (i < data.length / 2){
+            L[i] = data[i];
+          }else{
+            R[i] = data[i];
+          }
+        }
+      }
+    }
   }
   public static int[] merge(int[] left, int[] right){
     int[] merged = new int[left.length + right.length];
@@ -31,7 +53,7 @@ public class Merge{
   }
 
 // public static void mergesort(data){
-//   int [] temp  =  mergeSortH(data);
+//   int [] temp  =  mergeSort(data);
 //   data = Arrays.copyOf(temp, temp.length);
 // }
 //
