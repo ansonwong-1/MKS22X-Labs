@@ -29,13 +29,10 @@ public class Merge{
       }
     }return merged;
   }
-//   int [] merge(int [] left, int[] right){
-//   //return a new array that is the merged version of left and right
-// }
-//
-// void mergesort(data){
+
+// public static void mergesort(data){
 //   int [] temp  =  mergeSortH(data);
-//   copy temp into data
+//   data = Arrays.copyOf(temp, temp.length);
 // }
 //
 // int[] mergesortH(data){
