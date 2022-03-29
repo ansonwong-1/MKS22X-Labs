@@ -1,5 +1,5 @@
 import java.util.*;
-
+import java.io.*;
 
 public class MyDeque<E>{
   private E[] data;
@@ -16,8 +16,8 @@ public class MyDeque<E>{
   }
 
   // private void resize(){
-  //   if (needs to be resized)
-  //   E[] d = (E[]) new Object[not sure what number];
+  //   if (this.)
+  //   E[] d = (E[]) new Object[size * 2 + 1];
   //   int s = start;
   //   for (int i = 0; i < size; i++){
   //     if (s == data.length){
@@ -30,9 +30,14 @@ public class MyDeque<E>{
   //   }
   // }
 
-  public MyDeque(int initialCapacity){  }
+  public MyDeque(int initialCapacity){
 
-  // public int size(){ }
+  }
+
+  public int size(){
+    return size;
+  }
+
   public String toString(){
     String ans = "[";
     int s = start;
@@ -56,18 +61,40 @@ public class MyDeque<E>{
       if (i != data.length - 1){
         ans += ", ";
       }
-    }return ans + "]";
+    }return ans + "]" + '\n' + "start: " + start + "   end: " + end;
   }
   //
   // public void addFirst(E element){ }
   //
   // public void addLast(E element){ }
+
+  public E removeFirst(){
+    if (size > 0){
+      E ans = data[start];
+      data[start] = null;
+      start++;
+      return ans;
+    }else if(size == 0){
+      throw new NoSuchElementException ("no elements in the deque");
+    }else{
+      return null;
+    }
+  }
+
+  public E removeLast(){
+    if (size > 0){
+      E ans = data[end];
+      data[end] = null;
+      end--;
+      return ans;
+    }else if (size == 0){
+      throw new NoSuchElementException ("no elements in the deque");
+    }
+  }
+
+  // public E getFirst(){
   //
-  // public E removeFirst(){ }
-  //
-  // public E removeLast(){ }
-  //
-  // public E getFirst(){ }
+  // }
   //
   // public E getLast(){ }
 }
