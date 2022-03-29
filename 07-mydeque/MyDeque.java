@@ -10,27 +10,31 @@ public class MyDeque<E>{
     @SuppressWarnings("unchecked")
     E[] d = (E[])new Object[10];
     data = d;
+    start = 0;
+    end = -1;
+    size = 0;
   }
 
-  private void resize(){
-    E[] d = (E[]) new Object[not sure what number];
-    int s = start;
-    for (int i = 0; i < size; i++){
-      if (s == data.length){
-        s = 0;
-      }
-      if (s < data.length){
-        d[i] = data[s];
-        s++;
-      }
-    }
-  }
+  // private void resize(){
+  //   if (needs to be resized)
+  //   E[] d = (E[]) new Object[not sure what number];
+  //   int s = start;
+  //   for (int i = 0; i < size; i++){
+  //     if (s == data.length){
+  //       s = 0;
+  //     }
+  //     if (s < data.length){
+  //       d[i] = data[s];
+  //       s++;
+  //     }
+  //   }
+  // }
 
   public MyDeque(int initialCapacity){  }
 
   // public int size(){ }
   public String toString(){
-    String ans = '[';
+    String ans = "[";
     int s = start;
     for (int i = 0; i < size; i++){
       if (s == data.length){
@@ -47,9 +51,9 @@ public class MyDeque<E>{
   public String toStringAll(){
     // toString format has comma space between values, examples: "[a, b, c, d]" "[]" "[VALUE, VALUE2, VALUE3]"
     String ans = "[";
-    for (int i = 0 ; i < size; i++){
+    for (int i = 0 ; i < data.length; i++){
       ans += data[i];
-      if (i != size - 1){
+      if (i != data.length - 1){
         ans += ", ";
       }
     }return ans + "]";
