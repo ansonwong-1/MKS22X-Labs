@@ -1,19 +1,20 @@
 import java.util.*;
 import java.io.*;
 
-public class MyDeque<E>{
+public class MyDeque1<E>{
   private E[] data;
   private int size;
   private int start, end;
 
-  public MyDeque(){
+  public MyDeque1(){
     @SuppressWarnings("unchecked")
     E[] d = (E[])new Object[10];
     data = d;
-    start = 0;
-    end = 0;
+    start = -1;
+    end = -1;
     size = 0;
   }
+
   private void resize(){
     if (size >= data.length){
       E[] d = (E[]) new Object[data.length * 2 + 1];
@@ -33,12 +34,12 @@ public class MyDeque<E>{
     }
   }
 
-  public MyDeque(int initialCapacity){
+  public MyDeque1(int initialCapacity){
     @SuppressWarnings("unchecked")
     E[] d = (E[])new Object[initialCapacity];
     data = d;
     start = 0;
-    end = 0;
+    end = -1;
     size = 0;
   }
 
@@ -75,74 +76,46 @@ public class MyDeque<E>{
 
   public void addFirst(E element){
     resize();
+    if (size < 0){
+      start = 0;
+    }
     if (start == 0){
       start = data.length - 1;
     }else{
       start--;
     }
-    if (size < 0){
-      start = 0;
-    }
     data[start] = element;
     size++;
   }
+  // public void addLast(E element){ }
 
-  public void addLast(E element){
-    resize();
-    if (end == -1 || end == data.length - 1){
-      end = 0;
-    }else{
-      end++;
-    }
-    data[end] = element;
-    size++;
-  }
+  // public E removeFirst(){
+  //   if (size > 0){
+  //     E ans = data[start];
+  //     data[start] = null;
+  //     start++;
+  //     return ans;
+  //   }else if(size == 0){
+  //     throw new NoSuchElementException ("no elements in the deque");
+  //   }else{
+  //     return null;
+  //   }
+  // }
+  //
+  // public E removeLast(){
+  //   if (size > 0){
+  //     E ans = data[end];
+  //     data[end] = null;
+  //     end--;
+  //     return ans;
+  //   }else if (size == 0){
+  //     throw new NoSuchElementException ("no elements in the deque");
+  //   }
+  // }
 
-  public E removeFirst(){
-    if (size > 0){
-      E ans = data[start];
-      data[start] = null;
-      if (start != data.length - 1){
-        start++;
-      }else{
-        start = 0;
-      }
-      size--;
-      return ans;
-    }else{
-      throw new NoSuchElementException ("no elements in the deque");
-    }
-  }
-
-  public E removeLast(){
-    if (size > 0){
-      E ans = data[end];
-      data[end] = null;
-      if (end != 0){
-        end--;
-      }else{
-        end = data.length - 1;
-      }
-      size--;
-      return ans;
-    }else{
-      throw new NoSuchElementException ("no elements in the deque");
-    }
-  }
-
-  public E getFirst(){
-    if (size > 0){
-      return data[start];
-    }else{
-      throw new NoSuchElementException ("no elements in deque");
-    }
-  }
-
-  public E getLast(){
-    if (size > 0){
-      return data[end];
-    }else{
-      throw new NoSuchElementException ("no elements in deque");
-    }
-  }
+  // public E getFirst(){
+  //
+  // }
+  //
+  // public E getLast(){ }
 }
