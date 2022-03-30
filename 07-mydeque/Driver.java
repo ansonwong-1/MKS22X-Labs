@@ -5,13 +5,17 @@ public class Driver{
     MyDeque<Integer> st = new MyDeque<Integer>();
     Deque real = new LinkedList<Integer>();
     int add = 1;
+    Random random = new Random();
     for(int i = 0; i < 260; i++){
-      st.addFirst(add);
-      real.addFirst(add);
+      add = random.nextInt();
+      st.addLast(add);
+      real.addLast(add);
       add++;
       if(!(real.toString().equals(st.toString()))){
         System.out.println(st.toStringAll());
       }
     }
+
+
   }
 }

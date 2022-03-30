@@ -10,8 +10,8 @@ public class MyDeque<E>{
     @SuppressWarnings("unchecked")
     E[] d = (E[])new Object[10];
     data = d;
-    start = 0;
-    end = 0;
+    start = -1;
+    end = -1;
     size = 0;
   }
   private void resize(){
@@ -37,8 +37,8 @@ public class MyDeque<E>{
     @SuppressWarnings("unchecked")
     E[] d = (E[])new Object[initialCapacity];
     data = d;
-    start = 0;
-    end = 0;
+    start = -1;
+    end = -1;
     size = 0;
   }
 
@@ -83,8 +83,9 @@ public class MyDeque<E>{
     }else{
       start--;
     }
-    if (size < 0){
+    if (size <= 0){
       start = 0;
+      end = 0;
     }
     data[start] = element;
     size++;
@@ -95,8 +96,12 @@ public class MyDeque<E>{
       throw new NullPointerException("null");
     }
     resize();
-    if (end == data.length - 1 || size == 0){
+    if (end == data.length - 1){
       end = 0;
+    }
+    if (size == 0){
+      end = 0;
+      start = 0;
     }
     else{
       end++;

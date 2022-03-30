@@ -251,21 +251,24 @@ public class MyDequeTest {
     Deque real = new LinkedList<Integer>();
     Random random = new Random();
     int next;
-    for (int i = 0; i < 100000; i++) {
+    for (int i = 0; i < 10; i++) {
       next = random.nextInt();
       test.addFirst(next);
       real.addFirst(next);
       next = random.nextInt();
       test.addLast(next);
       real.addLast(next);
+      System.out.println(real.toString() + '\n' + test.toString() + "k");
     }
-    for (int i = 0; i < 99999; i++) {
+    for (int i = 0; i < 9; i++) {
       boolean getFirst = test.getFirst().equals(real.getFirst());
       boolean removeFirst = test.removeFirst().equals(real.removeFirst());
       boolean getLast = test.getLast().equals(real.getLast());
       boolean removeLast = test.removeLast().equals(real.removeLast());
       if (!(getFirst && removeFirst && getLast && removeLast)) {
         System.out.println("Does not function as a real deque would when adding and then removing many random values");
+        System.out.println("LLLLLL" + getFirst + removeFirst + getLast + removeLast);
+        System.out.println(real.toString() + '\n' + test.toStringAll() + "LLLLLL");
         return;
       }
     }
