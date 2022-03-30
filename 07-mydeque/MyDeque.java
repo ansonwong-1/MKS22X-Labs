@@ -74,6 +74,9 @@ public class MyDeque<E>{
 
 
   public void addFirst(E element){
+    if (element == null){
+      throw new NullPointerException("null");
+    }
     resize();
     if (start == 0){
       start = data.length - 1;
@@ -88,10 +91,14 @@ public class MyDeque<E>{
   }
 
   public void addLast(E element){
+    if (element == null){
+      throw new NullPointerException("null");
+    }
     resize();
-    if (end == -1 || end == data.length - 1){
+    if (end == data.length - 1 || size == 0){
       end = 0;
-    }else{
+    }
+    else{
       end++;
     }
     data[end] = element;
