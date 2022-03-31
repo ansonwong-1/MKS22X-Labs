@@ -10,7 +10,15 @@ public class Driver{
       add = random.nextInt();
       st.addLast(add);
       real.addLast(add);
-      add++;
+      if(!(real.toString().equals(st.toString()))){
+        System.out.println(st.toStringAll());
+      }
+    }
+    for(int i = 0; i < 100; i++){
+      st.removeFirst();
+      real.removeFirst();
+      st.removeLast();
+      real.removeLast();
       if(!(real.toString().equals(st.toString()))){
         System.out.println(st.toStringAll());
       }
