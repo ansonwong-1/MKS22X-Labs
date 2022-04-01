@@ -14,10 +14,12 @@ public class Calculator{
 // eval("8 2 + 99 9 - * 2 + 9 -") is 893.0
 // eval("1 2 3 4 5 + * - -") is 26.0
   public static double eval(String s){
+    boolean has = false;
     ArrayDeque<Double> nums = new ArrayDeque<Double>();
     Scanner in = new Scanner(s);
     while (in.hasNext()){
       if (in.hasNextDouble()){
+        has = true;
         nums.addFirst(in.nextDouble());
       }else{
         if (nums.size() <= 1){
@@ -41,7 +43,10 @@ public class Calculator{
           nums.addFirst(nums.removeFirst() % n);
         }
       }
-    }if (nums.size() > 1){
+    }if (!has){
+      throw new IllegalArgumentException("too few operands");
+    }
+    if (nums.size() > 1){
       throw new IllegalArgumentException("too many operands");
     }else{
       return nums.getFirst();
