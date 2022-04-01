@@ -23,7 +23,7 @@ public class Calculator{
         nums.addFirst(in.nextDouble());
       }else{
         if (nums.size() <= 1){
-          throw new IllegalArgumentException("too few operands for operation" + in.next());
+          throw new IllegalArgumentException("too few operands for operation " + in.next());
         }
         double n = nums.removeFirst();
         String i = in.next();
