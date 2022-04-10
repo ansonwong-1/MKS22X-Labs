@@ -25,18 +25,19 @@ public class BurnTrees{
    */
   public void tick(){
     ticks++;//leave this here.
-    for(int j = 0; j < frontier.size(); j++){
+    int initSize = frontier.size();
+    for(int j = 0; j < initSize; j++){
       int[] burned = frontier.remove();
-      int x = burned[0];
-      int y = burned[1];
-      map[burned[0]][burned[1]] = ASH;
+      int y = burned[0];
+      int x = burned[1];
+      map[y][x] = ASH;
       int[][] directions = new int[][]{{0, 1}, {1, 0}, {-1, 0}, {0, -1}};
       for (int i = 0; i < 4; i++){
         if (x + directions[i][0] >= 0 && x + directions[i][0] < map.length
             && y + directions[i][1] >= 0 && y + directions[i][1] < map[0].length){
-              if(map[x + directions[i][0]][y + directions[i][1]] == TREE){
-                map[x + directions[i][0]][y + directions[i][1]] = FIRE;
-                frontier.add(new int[]{x + directions[i][0], y + directions[i][1]});
+              if(map[y + directions[i][0]][x + directions[i][1]] == TREE){
+                map[y + directions[i][0]][x + directions[i][1]] = FIRE;
+                frontier.add(new int[]{y + directions[i][0], x + directions[i][1]});
               }
             }
       }
