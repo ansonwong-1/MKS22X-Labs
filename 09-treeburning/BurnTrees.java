@@ -8,8 +8,6 @@ public class BurnTrees{
   private static final int SPACE = 0;
   private Frontier frontier;
 
-
-
   /*Determine if the simulation is still burning
    *@return false if any fires are still burning, true otherwise
    */
@@ -27,6 +25,22 @@ public class BurnTrees{
    */
   public void tick(){
     ticks++;//leave this here.
+    for(int j = 0; j < frontier.size(); j++){
+      int[] burned = frontier.remove();
+      int x = burned[0];
+      int y = burned[1];
+      map[burned[0]][burned[1]] = ASH;
+      int[][] directions = new int[][]{{0, 1}, {1, 0}, {-1, 0}, {0, -1}};
+      for (int i = 0; i < 4; i++){
+        if (x + directions[i][0] >= 0 && x + directions[i][0] < map.length
+            && y + directions[i][1] >= 0 && y + directions[i][1] < map[0].length){
+              if(map[x + directions[i][0]][y + directions[i][1]] == TREE){
+                map[x + directions[i][0]][y + directions[i][1]] = FIRE;
+                frontier.add(new int[]{x + directions[i][0], y + directions[i][1]});
+              }
+            }
+      }
+    }
     //YOU MUST IMPLEMENT THE REST OF THIS METHOD
     //(BEFORE WRITING ANY CODE READ ALL OF THE CODE AND SEE HOW IT FITS TOGETHER)
   }
@@ -58,7 +72,7 @@ public class BurnTrees{
     //otherwise it is complete.
     for(int i = 0; i < map.length; i++){
       if(map[i][0]==TREE){
-        frontier.add(new int[]{i,0});
+        frontier.add(new int[]{i, 0});
         map[i][0]=FIRE;
       }
     }
