@@ -1,11 +1,13 @@
 import java.util.*;
 public class BurnTrees{
-  private int[][]map;
+  private int[][] map;
   private int ticks;
   private static final int TREE = 2;
   private static final int FIRE = 1;
   private static final int ASH = 3;
   private static final int SPACE = 0;
+  private Frontier frontier;
+
 
 
   /*Determine if the simulation is still burning
@@ -15,7 +17,7 @@ public class BurnTrees{
     //YOU MUST IMPLEMENT THIS METHOD
     //(BEFORE WRITING ANY CODE READ ALL OF THE CODE AND SEE HOW IT FITS TOGETHER)
     //HINT: do not check the board for fire which is an n^2 operation
-    return false;//placeholder for compilation purposes
+    return frontier.size() == 0;//placeholder for compilation purposes
   }
 
 
@@ -56,6 +58,7 @@ public class BurnTrees{
     //otherwise it is complete.
     for(int i = 0; i < map.length; i++){
       if(map[i][0]==TREE){
+        frontier.add(new int[]{i,0});
         map[i][0]=FIRE;
       }
     }
