@@ -31,17 +31,25 @@ public class BurnTrees{
       int y = burned[0];
       int x = burned[1];
       map[y][x] = ASH;
-      int[][] directions = new int[][]{{0, 1}, {1, 0}, {-1, 0}, {0, -1}};
-      for (int i = 0; i < 4; i++){
-        if (x + directions[i][0] >= 0 && x + directions[i][0] < map.length
-            && y + directions[i][1] >= 0 && y + directions[i][1] < map[0].length){
-              if(map[y + directions[i][0]][x + directions[i][1]] == TREE){
-                map[y + directions[i][0]][x + directions[i][1]] = FIRE;
-                frontier.add(new int[]{y + directions[i][0], x + directions[i][1]});
-              }
-            }
+      if (x - 1 >= 0 && map[y][x - 1] == TREE){
+        map[y][x - 1] = FIRE;
+        frontier.add(new int[]{y, x - 1});
+      }
+      if (y - 1 >= 0 && map[y - 1][x] == TREE){
+        map[y - 1][x] = FIRE;
+        frontier.add(new int[]{y-1, x});
+      }
+      if(x + 1 < map[0].length && map[y][x+1] == TREE){
+        map[y][x+1]=FIRE;
+        frontier.add(new int[]{y,x+1});
+      }
+      if(y + 1 < map.length && map[y+1][x] == TREE){
+        map[y+1][x]=FIRE;
+        frontier.add(new int[]{y+1,x});
       }
     }
+
+
     //YOU MUST IMPLEMENT THE REST OF THIS METHOD
     //(BEFORE WRITING ANY CODE READ ALL OF THE CODE AND SEE HOW IT FITS TOGETHER)
   }
@@ -54,6 +62,7 @@ public class BurnTrees{
    */
   public BurnTrees(int width,int height, double density){
     map = new int[height][width];
+    frontier = new Frontier();
     for(int r=0; r<map.length; r++ ){
       for(int c=0; c<map[r].length; c++ ){
         if(Math.random() < density){
