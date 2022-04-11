@@ -95,6 +95,7 @@ public class BurnTrees{
       int HEIGHT = 20;
       int DELAY = 200;
       double DENSITY = .7;
+
       if(args.length > 1){
         WIDTH = Integer.parseInt(args[0]);
         HEIGHT = Integer.parseInt(args[1]);
@@ -103,12 +104,55 @@ public class BurnTrees{
       if(args.length > 3){
         DELAY = Integer.parseInt(args[3]);
       }
-      BurnTrees b = new BurnTrees(WIDTH,HEIGHT,DENSITY);
+      // BurnTrees b = new BurnTrees(WIDTH,HEIGHT,DENSITY);
+      //
+      //
+      // int ans = b.animate(DELAY);//animate all screens
+      // System.out.println(ans);//print the final answer
+      if (args.length == 0){
+        WIDTH = 100;
+        HEIGHT = 100;
+        System.out.println("100 reps for a 100 x 100 board");
+        System.out.println("Density     Average Time (in ticks)");
+        String trow = "";
+        int percent = 5;
+        for (double i = 0.05; i < 1; i+= 0.05){
 
-
-      int ans = b.animate(DELAY);//animate all screens
-      System.out.println(ans);//print the final answer
-
+          double avg = 0;
+          int b = 0;
+          for (int j = 0; j < 100; j++){
+            BurnTrees c = new BurnTrees(WIDTH, HEIGHT, i);
+            avg+= c.run();
+          }
+          if(percent == 5){
+            trow = percent + "%          " + (avg/100.0);
+          }else{
+            trow = percent + "%         " + (avg/100.0);
+          }
+            System.out.println(trow);
+            percent+= 5;
+        }
+        System.out.println();
+        System.out.println();
+        System.out.println("Density     Average Time (in ticks)");
+        trow = "";
+        percent = 60;
+        for (double i = 0.60; i < 0.71; i+= 0.01){
+          double avg = 0;
+          int b = 0;
+          for (int j = 0; j < 100; j++){
+            BurnTrees c = new BurnTrees(WIDTH, HEIGHT, i);
+            avg+= c.run();
+          }
+          if(percent < 10){
+            trow = percent + "%          " + (avg/100.0);
+          }else{
+            trow = percent + "%         " + (avg/100.0);
+          }
+            System.out.println(trow);
+            percent+= 1;
+        }
+      }
       //int ans = b.outputAll();//print all screens one after another
       //System.out.println(ans);//print the final answer
     }
