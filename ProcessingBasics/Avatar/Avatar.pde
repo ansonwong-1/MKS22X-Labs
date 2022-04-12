@@ -27,6 +27,7 @@ void draw(){
    x = change(x);
    y = change(y);
    avatar(x,y);
+   avatar(mouseX, mouseY);
    
 }
 int change(int value){
@@ -57,6 +58,6 @@ void mouseClicked(){
   if(MODE < 3){
     MODE++;
   }else{
-    MODE = 0;
+    MODE = 1;
   }
 }
