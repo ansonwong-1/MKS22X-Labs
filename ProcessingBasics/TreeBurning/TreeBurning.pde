@@ -27,7 +27,7 @@
      *ANSWER : replace squareSize = 8; with the correct square size.
      * DO NOT just write a number, it must work when you change the size() command or the ROWS and COLS
      */
-    SQUARESIZE = (width * height)/(ROWS * COLS);//side length
+    SQUARESIZE = width/COLS;//side length
 
   }
 
@@ -70,7 +70,7 @@
      *Please use the same values that it was initialized with in the setup.
      * ANSWER: UPDATE THE NEXT LINE
      */
-    treeSim = null;
+    treeSim = new BurnTrees(ROWS, COLS, DENSITY);
   }
 
 
@@ -87,7 +87,23 @@
      *2. Decide how to fill them in using the String[] parameter
      *   Colors: Fire = RED, Tree = GREEN, SPACE = WHITE, ASH = GREY
      */
-     for (int i 
+     for (int i = 0; i < lines.length; i++){
+       for (int j = 0; j < lines[0].length(); j++){
+         if (lines[i].charAt(j) == ' '){
+           fill(255);
+         }
+         else if (lines[i].charAt(j) == '@'){
+           fill(0, 255, 0);
+         }
+         else if (lines[i].charAt(j) == 'w'){
+           fill(255, 0, 0);         
+         }
+         else if (lines[i].charAt(j) == '.'){
+           fill(100);
+         }
+         square(SQUARESIZE * j, SQUARESIZE * i, SQUARESIZE);
+       }
+     }
 
   }
 
