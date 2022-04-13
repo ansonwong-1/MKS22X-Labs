@@ -16,7 +16,7 @@
      *At this point you have initialized width, height,ROWS,COLS. You can change these values
      *to alter the screen size, but you cannot just change one value!
      *What must be true about the ratio of these values in order for this simulation to display squares?
-     *ANSWER HERE:
+     *ANSWER HERE: The ratio of the width to the cols must be the same as the ratio of the height to the rows. 
      */
 
     DENSITY = .61;
@@ -27,7 +27,7 @@
      *ANSWER : replace squareSize = 8; with the correct square size.
      * DO NOT just write a number, it must work when you change the size() command or the ROWS and COLS
      */
-    SQUARESIZE = 8;//side length
+    SQUARESIZE = (width * height)/(ROWS * COLS);//side length
 
   }
 
@@ -45,7 +45,7 @@
      *(The print statement is NOT part of the simulation, it is to help you answer this question)
      *hint:  If you cannot figure this out analytically, experiment to test
      *       the difference by changing the code. A print statement is commented out to facilitate testing.
-     *ANSWER HERE:
+     *ANSWER HERE: I think it acts as a delay; if tick was called every frame the simulation would be too fast for us to see and understand. 
      */
 
     String[]lines = treeSim.toString().split("\n");
@@ -87,6 +87,7 @@
      *2. Decide how to fill them in using the String[] parameter
      *   Colors: Fire = RED, Tree = GREEN, SPACE = WHITE, ASH = GREY
      */
+     for (int i 
 
   }
 
