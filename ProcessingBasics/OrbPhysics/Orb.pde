@@ -22,21 +22,31 @@
         //make sure you read the parameters of ellipse, so that you have the correct size.
         //radius is NOT one of the parameters of ellipse by default.
         fill(c);
-        ellipse(x, y, radius, radius);
+        ellipse(x, y, radius * 2, radius * 2);
       }
 
       void move(){
         //PART 2
         //change the x based on the xSpeed
         //change the y based on the ySpeed
+        x += xSpeed;
+        y += ySpeed;
 
         //PART 3
         //Change the speed when you collide with the end of the screen (all 4 sides)
-
+        if (x+radius >= width || x-radius < 0){
+          xSpeed *= -1;
+        }
+        if (y+radius >= height || y-radius < 0){
+          ySpeed *= -1;
+        }
         //Part 4
         //Add a small adjustment for gravity. Gravity is a ySpeed acceleration...
         //You don't need a variable for this if every object experiences the same
         //gravitational constant (find the value that looks nice experimentally, 9.8 will not work well).
-
+        ySpeed += 0.15;
+      }
+      void attract(Orb other){
+        
       }
     }
