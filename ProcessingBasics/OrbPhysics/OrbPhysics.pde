@@ -36,4 +36,12 @@
           background = true;
         }
       }
+      if (key == ' '){
+        if (MODE == GRAVITY){
+          MODE = ORBIT;
+        }
+        else if (MODE == ORBIT){
+          MODE = GRAVITY;
+        }
+      }
     }
