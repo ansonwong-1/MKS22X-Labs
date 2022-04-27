@@ -1,9 +1,15 @@
     ArrayList<Orb>orbList;
     Orb center = new Orb(500, 400, 0, 0, 20);
     boolean background;
+    int MODE;
+    int GRAVITY = 0;
+    int ORBIT = 1;
+    
     void setup() {
       size(1000, 800);
       orbList = new ArrayList<Orb>();
+      background = true;
+      MODE = GRAVITY;
     }
     void mouseClicked() {
       //add a new Orb to the orbList, constructed as follows:

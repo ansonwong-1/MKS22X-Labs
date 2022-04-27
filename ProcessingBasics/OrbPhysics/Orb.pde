@@ -54,6 +54,14 @@
         }
       }
       void attract(Orb other){
-        
+        /*
+        dx (xspeed) will be modified as follows:
+        dx += x_distance / distance
+        Later you can update this by incorporating a gravitational constant and squaring the distance as follows:
+        constant of 20
+        dx += G * x_distance / (distance * distance)
+        */
+        float distance = dist(this.x, this.y, other.x, other.y);
+        xSpeed += 20 * (other.x - this.x) / (distance * distance);
       }
     }
