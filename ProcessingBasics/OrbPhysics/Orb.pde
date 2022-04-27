@@ -42,6 +42,8 @@
           if (y+radius >= height || y-radius < 0){
             ySpeed *= -1;
           }
+        }
+        if (gravity){
           //Part 4
           //Add a small adjustment for gravity. Gravity is a ySpeed acceleration...
           //You don't need a variable for this if every object experiences the same
@@ -60,5 +62,10 @@
         float distance = dist(this.x, this.y, other.x, other.y);
         other.xSpeed += 20 * (this.x - other.x) / (distance * distance);
         other.ySpeed += 20 * (this.y - other.y) / (distance * distance);
+      }
+      void attractSpring(Orb other){
+        float distance = dist(this.x, this.y, other.x, other.y);
+        other.xSpeed += (distance - STRING_LENGTH)*(SPRING_CONSTANT)*(this.x - other.x)/distance;
+        other.ySpeed += (distance - STRING_LENGTH)*(SPRING_CONSTANT)*(this.y - other.y)/distance;
       }
     }
