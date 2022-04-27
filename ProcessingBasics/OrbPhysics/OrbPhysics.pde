@@ -1,5 +1,6 @@
     ArrayList<Orb>orbList;
     Orb center = new Orb(500, 400, 0, 0, 20);
+    boolean background;
     void setup() {
       size(1000, 800);
       orbList = new ArrayList<Orb>();
@@ -12,7 +13,9 @@
       orbList.add(new Orb(mouseX, mouseY, 5, 0, 20));
     }
     void draw() {
-      background(255);
+      if (background){
+        background(255);
+      }
       center.display();
       for (Orb o : orbList) {
         o.move();
@@ -25,5 +28,12 @@
     void keyPressed(){
       if (keyCode == BACKSPACE){
         orbList = new ArrayList<Orb>();
+      }
+      if (key == 'b'){
+        if (background){
+          background = false;
+        }else{
+          background = true;
+        }
       }
     }
