@@ -47,11 +47,6 @@
           //gravitational constant (find the value that looks nice experimentally, 9.8 will not work well).
           ySpeed += 0.15;
         }
-        if (MODE == ORBIT){
-          for (int i = 0; i < orbList.size(); i++){
-            center.attract(orbList.get(i));
-          }
-        }
       }
       void attract(Orb other){
         /*
@@ -62,6 +57,7 @@
         dx += G * x_distance / (distance * distance)
         */
         float distance = dist(this.x, this.y, other.x, other.y);
-        xSpeed += 20 * (other.x - this.x) / (distance * distance);
+        other.xSpeed += 20 * (this.x - other.x) / (distance * distance);
+        other.ySpeed += 20 * (this.y - other.y) / (distance * distance);
       }
     }
