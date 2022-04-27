@@ -23,6 +23,7 @@
         //radius is NOT one of the parameters of ellipse by default.
         fill(c);
         ellipse(x, y, radius * 2, radius * 2);
+        line(x, y, x + (5 * xSpeed), y + (5 * ySpeed));
       }
 
       void move(){

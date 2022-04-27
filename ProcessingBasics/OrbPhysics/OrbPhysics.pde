@@ -26,7 +26,9 @@
       for (Orb o : orbList) {
         o.move();
         o.display();
-        center.attract(o);
+        if (MODE == ORBIT){
+          center.attract(o);
+        }
       }
       fill(0);
       text(frameRate, 20, 20);
