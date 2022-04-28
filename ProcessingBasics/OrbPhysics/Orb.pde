@@ -66,6 +66,8 @@
       void attractSpring(Orb other){
         float distance = dist(this.x, this.y, other.x, other.y);
         other.xSpeed += (distance - STRING_LENGTH)*(SPRING_CONSTANT)*(this.x - other.x)/distance;
+        other.xSpeed *= SPRING_DAMPEN;
         other.ySpeed += (distance - STRING_LENGTH)*(SPRING_CONSTANT)*(this.y - other.y)/distance;
+        other.ySpeed *= SPRING_DAMPEN;
       }
     }
