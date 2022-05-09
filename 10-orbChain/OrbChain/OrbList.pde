@@ -15,6 +15,8 @@
         */
         void add(OrbNode orb){
           //insert orb at the end of the list before the last node.
+          last.prev.next = orb;
+          last.prev = orb;
         }
 
         /**
@@ -24,6 +26,9 @@
         void processAll() {
           OrbNode current = first;
           //advance current to next until it is null, move() each of the nodes
+          while (current != null){
+            current.move();
+          }
         }
         /**
         *complete this method
