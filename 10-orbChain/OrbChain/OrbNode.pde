@@ -24,6 +24,13 @@
       ellipse(x, y, radius*2, radius*2);
       //If next or previous exist, draw lines to them! (aim for slightly off center)
       /*you write this part*/
+      //check how much off center
+      if (next != null){
+        line(x, y, next.x - random(10), next.y - random(10));
+      }
+      if (prev != null){
+        line(x, y, prev.x - random(10), prev.y - random(10));
+      }
 
 
     }
