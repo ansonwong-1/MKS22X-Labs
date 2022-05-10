@@ -26,10 +26,10 @@
       /*you write this part*/
       //check how much off center
       if (next != null){
-        line(x, y, next.x - random(10), next.y - random(10));
+        line(x, y, next.x - 2, next.y - 2);
       }
       if (prev != null){
-        line(x, y, prev.x - random(10), prev.y - random(10));
+        line(x, y, prev.x - 2, prev.y - 2);
       }
 
 
@@ -52,6 +52,12 @@
     void move() {
       //have prev and next apply spring force to this node;
       /*you write this part*/
+      if (prev != null){
+        prev.springAttract(this);
+      }
+      if (next != null){
+        next.springAttract(this);
+      }
 
       //apply velocity to position
       x+=dx;
