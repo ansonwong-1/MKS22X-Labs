@@ -15,7 +15,7 @@
         */
         void add(OrbNode orb){
           //insert orb at the end of the list before the last node.
-          orb.prev = last.prev.next;
+          orb.prev = last.prev;
           orb.next = last;
           last.prev.next = orb;
           last.prev = orb;
@@ -30,6 +30,7 @@
           //advance current to next until it is null, move() each of the nodes
           while (current != null){
             current.move();
+            current = current.next;
           }
         }
         /**
@@ -39,5 +40,9 @@
         void display() {
           OrbNode current = first;
           //advance current to next until it is null, display() each of the nodes
+          while (current != null){
+            current.display();
+            current = current.next;
+          }
         }
       }

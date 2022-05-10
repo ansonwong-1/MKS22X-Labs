@@ -26,10 +26,10 @@
       /*you write this part*/
       //check how much off center
       if (next != null){
-        line(x, y, next.x - 2, next.y - 2);
+        line(x, y, next.x - 5, next.y - 5);
       }
       if (prev != null){
-        line(x, y, prev.x - 2, prev.y - 2);
+        line(x, y, prev.x - 5, prev.y - 5);
       }
 
 
