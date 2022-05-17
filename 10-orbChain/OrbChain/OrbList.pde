@@ -20,6 +20,22 @@
           last.prev.next = orb;
           last.prev = orb;
         }
+        
+        void add(int xcor,OrbNode toBeAdded){
+          OrbNode current = first;
+          boolean smaller = true;
+          while (current != null && smaller){
+            if (current.x > xcor){
+              toBeAdded.prev = current.prev;
+              current.prev.next = toBeAdded;
+              current.prev = toBeAdded;
+              toBeAdded.next = current;
+              smaller = false;
+            }
+            current = current.next;
+            
+          }
+        }
 
         /**
         *complete this method

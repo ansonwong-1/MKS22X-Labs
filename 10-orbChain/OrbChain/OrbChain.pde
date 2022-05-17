@@ -13,14 +13,14 @@
     void setup() {
       size(1000, 800);
       orbs = new OrbList();
-      MODE = ADD;
+      CLICK_MODE = ADD;
     }
     void mouseClicked() {
-      if (MODE == ADD){
+      if (CLICK_MODE == ADD){
         orbs.add(new OrbNode(mouseX,mouseY,0,0,30));
       }
-      if (MODE == INSERT){
-        //add(mouseX, new OrbNode)
+      if (CLICK_MODE == INSERT){
+        orbs.add(mouseX, new OrbNode(mouseX,mouseY,0,0,30));
       }
       if (MODE == DELETE){ 
         //delete(getNodeAt(mouseX, mouseY);
@@ -29,6 +29,12 @@
     }
     void draw() {
       background(255);
+      if (CLICK_MODE == ADD){
+        text("ADD", 20, 60);
+      }
+      if (CLICK_MODE == INSERT){
+        text("INSERT", 20, 60);
+      }
       orbs.processAll();
       orbs.display();
     }
