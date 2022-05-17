@@ -5,13 +5,27 @@
     static float SPRING_CONSTANT = 0.015;
     static int MODE = SPRING;
     static float GRAVITY = 0.35;
+    int CLICK_MODE;
+    final int ADD = 0;
+    final int INSERT = 1;
+    final int DELETE = 2;
     OrbList orbs;
     void setup() {
       size(1000, 800);
       orbs = new OrbList();
+      MODE = ADD;
     }
     void mouseClicked() {
-      orbs.add(new OrbNode(mouseX,mouseY,0,0,30));
+      if (MODE == ADD){
+        orbs.add(new OrbNode(mouseX,mouseY,0,0,30));
+      }
+      if (MODE == INSERT){
+        //add(mouseX, new OrbNode)
+      }
+      if (MODE == DELETE){ 
+        //delete(getNodeAt(mouseX, mouseY);
+      }
+      
     }
     void draw() {
       background(255);
@@ -20,6 +34,13 @@
     }
 
     void keyPressed(){
+      if (key == ' '){
+        if (CLICK_MODE != 2){
+          CLICK_MODE++;
+        }else{
+          CLICK_MODE = 0;
+        }
+      }
       if (key == '1'){
         SPRING_CONSTANT *= 1.05;
       }
