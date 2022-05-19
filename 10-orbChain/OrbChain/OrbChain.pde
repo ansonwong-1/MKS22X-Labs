@@ -22,8 +22,8 @@
       if (CLICK_MODE == INSERT){
         orbs.add(mouseX, new OrbNode(mouseX,mouseY,0,0,30));
       }
-      if (MODE == DELETE){ 
-        //delete(getNodeAt(mouseX, mouseY);
+      if (CLICK_MODE == DELETE){ 
+        orbs.delete(orbs.getNodeAt(mouseX, mouseY));
       }
       
     }
@@ -34,6 +34,9 @@
       }
       if (CLICK_MODE == INSERT){
         text("INSERT", 20, 60);
+      }
+      if (CLICK_MODE == DELETE){
+        text("DELETE", 20, 60);
       }
       orbs.processAll();
       orbs.display();

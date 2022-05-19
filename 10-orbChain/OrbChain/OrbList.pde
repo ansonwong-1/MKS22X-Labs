@@ -20,7 +20,22 @@
           last.prev.next = orb;
           last.prev = orb;
         }
-        
+        void delete(OrbNode target){
+          if (target != null){
+            target.prev.next = target.next;
+            target.next.prev = target.prev;
+          }
+        }
+        OrbNode getNodeAt(int x, int y){
+          OrbNode current = first.next;
+          boolean orbThere = false;
+          while (current != null && !orbThere && current != last){
+            if (dist(current.x, current.y, x, y) < 30){
+               return current;
+             }
+             current = current.next;
+          }return null;
+        }
         void add(int xcor,OrbNode toBeAdded){
           OrbNode current = first;
           boolean smaller = true;
