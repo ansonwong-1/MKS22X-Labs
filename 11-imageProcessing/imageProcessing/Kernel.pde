@@ -22,8 +22,8 @@
       /**You must write this method that applies the kernel to the source,
         *and saves the data to the destination.*/
       void apply(PImage source, PImage destination) {
-        for (int i = 0; i < source.width; i++){
-          for (int j = 0; j < source.height; j++){
+        for (int i = 1; i < source.width - 1; i++){
+          for (int j = 1; j < source.height - 1; j++){
             destination.set(i, j, calcNewColor(source, i, j));
           }
         }
