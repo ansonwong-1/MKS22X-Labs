@@ -5,7 +5,7 @@
       *This implementation only allows 3x3 kernels
       */
       public Kernel(float[][]init) {
-
+        kernel = init;
       }
 
       /**If part of the kernel is off of the image, return black, Otherwise
@@ -16,7 +16,7 @@
       color calcNewColor(PImage img, int x, int y) {
         //Hint: start by always returning black.
         //This will let you test your apply method right away!
-
+        return 0;
       }
 
       /**You must write this method that applies the kernel to the source,
